@@ -1,0 +1,240 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat May  4 11:12:19 2019
+# Process ID: 9188
+# Current directory: C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5452 C:\Xilinx\workspace\2018.3\zybo_HDMI_IN_OUT\system\system.xpr
+# Log file: C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/vivado.log
+# Journal file: C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.xpr
+update_compile_order -fileset sources_1
+open_bd_design {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd}
+validate_bd_design
+reset_target all [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+export_ip_user_files -of_objects  [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -sync -no_script -force -quiet
+delete_ip_run [get_files -of_objects [get_fileset sources_1] C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+make_wrapper -files [get_files C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -top
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+file mkdir C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk
+file copy -force C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.runs/impl_1/system_wrapper.sysdef C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk/system_wrapper.hdf
+
+file copy -force C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.runs/impl_1/system_wrapper.sysdef C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk/system_wrapper.hdf
+
+launch_sdk -workspace C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk -hwspec C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk/system_wrapper.hdf
+copy_bd_objs /  [get_bd_cells {HDMI_OUT vdma_out_mm2s vdma_in_s2mm TPG}]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins HDMI_OUT1/S_AXIS] [get_bd_intf_pins vdma_out_mm2s1/M_AXIS_MM2S]
+startgroup
+set_property -dict [list CONFIG.PCW_USE_S_AXI_HP2 {1} CONFIG.PCW_USE_S_AXI_HP3 {1}] [get_bd_cells Zynq_system/processing_system7_0]
+endgroup
+connect_bd_net [get_bd_pins Zynq_system/processing_system7_0/S_AXI_HP2_ACLK] [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK2]
+connect_bd_net [get_bd_pins Zynq_system/processing_system7_0/S_AXI_HP3_ACLK] [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK2]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins vdma_in_s2mm1/M00_AXI] [get_bd_intf_pins Zynq_system/processing_system7_0/S_AXI_HP2]
+connect_bd_intf_net [get_bd_intf_pins Zynq_system/processing_system7_0/S_AXI_HP3] -boundary_type upper [get_bd_intf_pins vdma_out_mm2s1/M00_AXI]
+connect_bd_net [get_bd_pins vdma_in_s2mm1/s2mm_frame_ptr_out] [get_bd_pins vdma_out_mm2s1/mm2s_frame_ptr_in] -boundary_type upper
+startgroup
+set_property -dict [list CONFIG.NUM_PORTS {4}] [get_bd_cells Zynq_system/PL2PS_IRQ]
+endgroup
+connect_bd_net [get_bd_pins Zynq_system/PL2PS_IRQ/In2] [get_bd_pins vdma_in_s2mm1/s2mm_interrupt]
+set_property name intr_2 [get_bd_pins Zynq_system/In2]
+startgroup
+make_bd_intf_pins_external  [get_bd_intf_pins HDMI_OUT1/TMDS]
+endgroup
+set_property name TMDS_User [get_bd_intf_ports TMDS_0]
+set_property name vdma_in_s2mm_user [get_bd_cells vdma_in_s2mm1]
+set_property name vdma_out_mm2s_resr [get_bd_cells vdma_out_mm2s1]
+set_property name vdma_out_mm2s_user [get_bd_cells vdma_out_mm2s_resr]
+set_property name TPG_user [get_bd_cells TPG1]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins TPG_user/AXIS_TPG] [get_bd_intf_pins vdma_in_s2mm_user/S_AXIS_S2MM]
+connect_bd_net [get_bd_pins TPG_user/pix_clk] [get_bd_pins Zynq_system/pix_clk150] -boundary_type upper
+connect_bd_net [get_bd_pins TPG_user/pix_rst_n] [get_bd_pins Zynq_system/per_pix_aresetn150] -boundary_type upper
+startgroup
+set_property -dict [list CONFIG.NUM_MI {7}] [get_bd_cells Zynq_system/ps7_0_axi_periph]
+endgroup
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M04_AXI] [get_bd_intf_pins vdma_in_s2mm_user/S_AXI_LITE]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M05_AXI] [get_bd_intf_pins vdma_out_mm2s_user/S_AXI_LITE]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M04_ACLK] [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M05_ACLK] [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M04_ARESETN] [get_bd_pins Zynq_system/rst_ps7_0_50M/peripheral_aresetn]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M05_ARESETN] [get_bd_pins Zynq_system/pix_clk/per_pix_aresetn150] -boundary_type upper
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M06_ACLK] [get_bd_pins Zynq_system/pix_clk/pix_clk150] -boundary_type upper
+disconnect_bd_net /Zynq_system/proc_sys_reset_150M_peripheral_aresetn [get_bd_pins Zynq_system/ps7_0_axi_periph/M05_ARESETN]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M05_ARESETN] [get_bd_pins Zynq_system/rst_ps7_0_50M/peripheral_aresetn]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M06_ARESETN] [get_bd_pins Zynq_system/pix_clk/per_pix_aresetn150] -boundary_type upper
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M06_AXI] [get_bd_intf_pins TPG_user/s_axi_CTRL]
+connect_bd_net [get_bd_pins HDMI_OUT1/pix_clk] [get_bd_pins Zynq_system/pix_clk150] -boundary_type upper
+connect_bd_net [get_bd_pins HDMI_OUT1/pix_aresetn] [get_bd_pins Zynq_system/per_pix_aresetn150] -boundary_type upper
+regenerate_bd_layout
+connect_bd_net [get_bd_pins vdma_in_s2mm_user/pix_clk] [get_bd_pins Zynq_system/pix_clk150] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_in_s2mm_user/axi_resetn] [get_bd_pins Zynq_system/axi_lite_ARESETN] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_in_s2mm_user/s_axi_lite_aclk] [get_bd_pins Zynq_system/axi_lite_CLK] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_in_s2mm_user/Interconnect_ARESETN] [get_bd_pins Zynq_system/HP_interconnect_aresetn] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_in_s2mm_user/periphera_ARESETN] [get_bd_pins Zynq_system/HP_peripheral_aresetn] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_in_s2mm_user/Interconnect_ACLK] [get_bd_pins Zynq_system/HP_Interconnect_ACLK] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_out_mm2s_user/Interconnect_ACLK] [get_bd_pins Zynq_system/HP_Interconnect_ACLK] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_out_mm2s_user/periphera_ARESETN] [get_bd_pins Zynq_system/HP_peripheral_aresetn] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_out_mm2s_user/Interconnect_ARESETN] [get_bd_pins Zynq_system/HP_interconnect_aresetn] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_out_mm2s_user/s_axi_lite_aclk] [get_bd_pins Zynq_system/axi_lite_CLK] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_out_mm2s_user/axi_resetn] [get_bd_pins Zynq_system/axi_lite_ARESETN] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_out_mm2s_user/pix_clk] [get_bd_pins Zynq_system/pix_clk150] -boundary_type upper
+regenerate_bd_layout
+validate_bd_design
+assign_bd_address
+validate_bd_design
+reset_target all [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+export_ip_user_files -of_objects  [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -sync -no_script -force -quiet
+make_wrapper -files [get_files C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -top
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+place_ports TMDS_User_clk_p T11
+set_property package_pin "" [get_ports [list  {TMDS_User_data_p[1]}]]
+place_ports {TMDS_User_data_p[0]} T12
+place_ports {TMDS_User_data_p[1]} V15
+place_ports {TMDS_User_data_p[2]} W14
+save_constraints
+close_design
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+delete_bd_objs [get_bd_nets PL_Switch_ip2intc_irpt] [get_bd_intf_nets ps7_0_axi_periph_M00_AXI] [get_bd_intf_nets PL_Switch_GPIO] [get_bd_cells PL_Switch]
+delete_bd_objs [get_bd_intf_ports pl_switch]
+delete_bd_objs [get_bd_cells HDMI_OUT/ila_video_out_stream]
+delete_bd_objs [get_bd_cells TPG_user/ila_tpg]
+delete_bd_objs [get_bd_cells TPG/ila_tpg]
+delete_bd_objs [get_bd_cells vdma_out_mm2s/mm2s_axis_ila]
+delete_bd_objs [get_bd_cells vdma_out_mm2s_user/mm2s_axis_ila]
+regenerate_bd_layout
+regenerate_bd_layout
+validate_bd_design
+regenerate_bd_layout
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+regenerate_bd_layout
+delete_bd_objs [get_bd_intf_nets s_axi_CTRL_1] [get_bd_intf_nets TPG_user_AXIS_TPG] [get_bd_cells TPG_user]
+delete_bd_objs [get_bd_nets vdma_in_s2mm1_s2mm_interrupt] [get_bd_nets vdma_in_s2mm1_s2mm_frame_ptr_out] [get_bd_intf_nets S_AXI_LITE_2] [get_bd_intf_nets vdma_in_s2mm1_M00_AXI] [get_bd_cells vdma_in_s2mm_user]
+delete_bd_objs [get_bd_intf_nets vdma_out_mm2s1_M00_AXI]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/S_AXI_HP2] [get_bd_intf_pins vdma_out_mm2s_user/M00_AXI]
+startgroup
+set_property -dict [list CONFIG.PCW_USE_S_AXI_HP3 {0}] [get_bd_cells Zynq_system/processing_system7_0]
+delete_bd_objs [get_bd_intf_nets Zynq_system/Conn2]
+endgroup
+delete_bd_objs [get_bd_intf_pins Zynq_system/S_AXI_HP3]
+regenerate_bd_layout
+validate_bd_design
+validate_bd_design -force
+assign_bd_address
+regenerate_bd_layout
+validate_bd_design
+reset_target all [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+export_ip_user_files -of_objects  [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -sync -no_script -force -quiet
+delete_ip_run [get_files -of_objects [get_fileset sources_1] C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+make_wrapper -files [get_files C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -top
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {2048}] [get_bd_cells TPG/ila_tpg]
+endgroup
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {2048}] [get_bd_cells vdma_out_mm2s/mm2s_axis_ila]
+endgroup
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {2048}] [get_bd_cells vdma_out_mm2s_user/mm2s_axis_ila]
+endgroup
+regenerate_bd_layout -hierarchy [get_bd_cells vdma_out_mm2s_user]
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {2048}] [get_bd_cells HDMI_OUT/ila_video_out_stream]
+endgroup
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {2048}] [get_bd_cells HDMI_OUT1/ila_video_out_stream]
+endgroup
+regenerate_bd_layout
+validate_bd_design
+reset_target all [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+export_ip_user_files -of_objects  [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -sync -no_script -force -quiet
+delete_ip_run [get_files -of_objects [get_fileset sources_1] C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+make_wrapper -files [get_files C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -top
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+delete_bd_objs [get_bd_nets PL_Switch_ip2intc_irpt] [get_bd_intf_nets ps7_0_axi_periph_M00_AXI] [get_bd_intf_nets PL_Switch_GPIO] [get_bd_cells PL_Switch]
+delete_bd_objs [get_bd_intf_ports pl_switch]
+delete_bd_objs [get_bd_cells vdma_out_mm2s_user/mm2s_axis_ila]
+delete_bd_objs [get_bd_cells vdma_out_mm2s/mm2s_axis_ila]
+delete_bd_objs [get_bd_cells HDMI_OUT/ila_video_out_stream]
+delete_bd_objs [get_bd_cells HDMI_OUT1/ila_video_out_stream]
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {1024}] [get_bd_cells HDMI_OUT1/ila_video_out]
+endgroup
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {1024}] [get_bd_cells HDMI_OUT/ila_video_out]
+endgroup
+delete_bd_objs [get_bd_cells TPG/ila_tpg]
+regenerate_bd_layout
+validate_bd_design
+reset_target all [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd]
+export_ip_user_files -of_objects  [get_files  C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -sync -no_script -force -quiet
+make_wrapper -files [get_files C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.srcs/sources_1/bd/system/system.bd] -top
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+file copy -force C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.runs/impl_1/system_wrapper.sysdef C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk/system_wrapper.hdf
+
+launch_sdk -workspace C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk -hwspec C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.sdk/system_wrapper.hdf
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.runs/impl_1/system_wrapper.bit} [get_hw_devices xc7z010_1]
+set_property PROBES.FILE {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.runs/impl_1/system_wrapper.ltx} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.runs/impl_1/system_wrapper.ltx} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT1/ila_video_out"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_3 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_4 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_5 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s_user/mm2s_ila"}]]
+add_wave -into {hw_ila_data_4.wcfg} -radix hex { {system_i/vdma_out_mm2s/axi_vdma_mm2s_mm2s_introut} {system_i/vdma_out_mm2s/axi_vdma_mm2s_mm2s_frame_ptr_out} }
+add_wave -into {hw_ila_data_5.wcfg} -radix hex { {system_i/vdma_out_mm2s_user/axi_vdma_mm2s_mm2s_introut} {system_i/vdma_out_mm2s_user/axi_vdma_mm2s_mm2s_frame_ptr_out} }
+add_wave -into {hw_ila_data_3.wcfg} -radix hex { {system_i/vdma_in_s2mm/axi_vdma_s2mm_s2mm_frame_ptr_out} {system_i/vdma_in_s2mm/axi_vdma_s2mm_s2mm_introut} }
+add_wave -into {hw_ila_data_2.wcfg} -radix hex { {system_i/HDMI_OUT1/hdmi_vid_out_locked} {system_i/HDMI_OUT1/hdmi_vid_out_overflow} {system_i/HDMI_OUT1/hdmi_vid_out_underflow} {system_i/HDMI_OUT1/hdmi_vid_out_vid_active_video} {system_i/HDMI_OUT1/hdmi_vid_out_vid_data} {system_i/HDMI_OUT1/hdmi_vid_out_vid_field_id} {system_i/HDMI_OUT1/hdmi_vid_out_vid_hblank} {system_i/HDMI_OUT1/hdmi_vid_out_vid_hsync} {system_i/HDMI_OUT1/hdmi_vid_out_vid_vblank} {system_i/HDMI_OUT1/hdmi_vid_out_vid_vsync} {system_i/HDMI_OUT1/hdmi_vid_out_vtg_ce} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT1/ila_video_out"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT1/ila_video_out"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT1/ila_video_out"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s_user/mm2s_ila"}] -trigger_now
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s_user/mm2s_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s_user/mm2s_ila"}]]
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.hw/hw_1/wave/hw_ila_data_2/hw_ila_data_2.wcfg}
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.hw/hw_1/wave/hw_ila_data_3/hw_ila_data_3.wcfg}
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.hw/hw_1/wave/hw_ila_data_4/hw_ila_data_4.wcfg}
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_HDMI_IN_OUT/system/system.hw/hw_1/wave/hw_ila_data_5/hw_ila_data_5.wcfg}

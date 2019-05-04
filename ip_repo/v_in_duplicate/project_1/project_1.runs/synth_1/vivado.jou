@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Nov 29 18:39:34 2017
+# Process ID: 6576
+# Current directory: E:/P_2017/SSTD2/ICB/RTL/2nd/SEU/icb_seu_vso_2nd_171130/ip_repo/v_in_duplicate/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log v_in_duplicate.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source v_in_duplicate.tcl
+# Log file: E:/P_2017/SSTD2/ICB/RTL/2nd/SEU/icb_seu_vso_2nd_171130/ip_repo/v_in_duplicate/project_1/project_1.runs/synth_1/v_in_duplicate.vds
+# Journal file: E:/P_2017/SSTD2/ICB/RTL/2nd/SEU/icb_seu_vso_2nd_171130/ip_repo/v_in_duplicate/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source v_in_duplicate.tcl -notrace

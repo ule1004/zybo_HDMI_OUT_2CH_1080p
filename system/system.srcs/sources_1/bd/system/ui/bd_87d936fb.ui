@@ -1,0 +1,44 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port pix_clk -pg 1 -y 490 -defaultsOSRD
+preplace port TMDS -pg 1 -y 520 -defaultsOSRD
+preplace port S_AXIS -pg 1 -y 350 -defaultsOSRD
+preplace port pix_aresetn -pg 1 -y 470 -defaultsOSRD
+preplace inst ila_video_out -pg 1 -lvl 5 -y 160 -defaultsOSRD
+preplace inst hdmi_high -pg 1 -lvl 1 -y 410 -defaultsOSRD
+preplace inst axis_32to24_converter -pg 1 -lvl 3 -y 370 -defaultsOSRD
+preplace inst util_vector_logic_and -pg 1 -lvl 2 -y 420 -defaultsOSRD
+preplace inst util_vector_logic_not -pg 1 -lvl 4 -y 560 -defaultsOSRD
+preplace inst v_tc -pg 1 -lvl 3 -y 150 -defaultsOSRD
+preplace inst rgb2dvi -pg 1 -lvl 5 -y 520 -defaultsOSRD
+preplace inst hdmi_vid_out -pg 1 -lvl 4 -y 180 -defaultsOSRD
+preplace netloc Conn1 1 5 1 N
+preplace netloc hdmi_vid_out_overflow 1 4 1 N
+preplace netloc hdmi_vid_out_locked 1 4 1 N
+preplace netloc util_vector_logic_not_Res 1 4 1 N
+preplace netloc hdmi_vid_out_vtg_ce 1 2 3 520 450 NJ 450 1210
+preplace netloc util_vector_logic_and_Res 1 2 2 490 270 860
+preplace netloc hdmi_vid_out_vid_hsync 1 4 1 1230
+preplace netloc hdmi_vid_out_vid_active_video 1 4 1 1240
+preplace netloc hdmi_vid_out_vid_data 1 4 1 1260
+preplace netloc v_tc_vsync_out 1 3 1 N
+preplace netloc v_tc_vblank_out 1 3 1 N
+preplace netloc axis_32to24_converter_M_AXIS 1 3 1 840
+preplace netloc hdmi_high_dout 1 1 3 180 30 NJ 30 870
+preplace netloc hdmi_vid_out_vid_hblank 1 4 1 N
+preplace netloc v_tc_hblank_out 1 3 1 N
+preplace netloc S_AXIS_1 1 0 3 NJ 350 NJ 350 NJ
+preplace netloc hdmi_vid_out_vid_vblank 1 4 1 N
+preplace netloc hdmi_vid_out_vid_field_id 1 4 1 N
+preplace netloc hdmi_vid_out_vid_vsync 1 4 1 1220
+preplace netloc v_tc_active_video_out 1 3 1 N
+preplace netloc Net1 1 0 4 NJ 470 190 340 510 290 850
+preplace netloc Net 1 0 5 20J 330 NJ 330 500 280 880 370 1250
+preplace netloc v_tc_hsync_out 1 3 1 N
+preplace netloc hdmi_vid_out_underflow 1 4 1 N
+levelinfo -pg 1 0 100 340 680 1050 1390 1540 -top -10 -bot 640
+"
+}
+

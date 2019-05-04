@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Tue Mar 28 18:14:39 2017
+# Process ID: 3984
+# Current directory: E:/P_2017/SEEDCORE/RTL/V16_3/mcb_axis_sdlc_170327/ip_repo/clk_sel/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log clk_4_1_sel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source clk_4_1_sel.tcl
+# Log file: E:/P_2017/SEEDCORE/RTL/V16_3/mcb_axis_sdlc_170327/ip_repo/clk_sel/project_1/project_1.runs/synth_1/clk_4_1_sel.vds
+# Journal file: E:/P_2017/SEEDCORE/RTL/V16_3/mcb_axis_sdlc_170327/ip_repo/clk_sel/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source clk_4_1_sel.tcl -notrace

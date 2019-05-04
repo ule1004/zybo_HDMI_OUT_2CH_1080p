@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="synth_1" LaunchDir="D:/LGE/A7/A7_out_3840x160_62.5M_60hz_160514_2/ip_repo/signal_trig/signal_trig_1/signal_trig_1.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+</Runs>
+

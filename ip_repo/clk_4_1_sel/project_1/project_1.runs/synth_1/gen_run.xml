@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7k325tffg900-2" LaunchTime="1490692479">
+  <File Type="RDS-PROPCONSTRS" Name="clk_4_1_sel_drc_synth.rpt"/>
+  <File Type="PA-TCL" Name="clk_4_1_sel.tcl"/>
+  <File Type="RDS-RDS" Name="clk_4_1_sel.vds"/>
+  <File Type="RDS-UTIL" Name="clk_4_1_sel_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="clk_4_1_sel_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="clk_4_1_sel.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="clk_4_1_sel_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="clk_4_1_sel_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../clk_4_1_sel.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="clk_4_1_sel"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

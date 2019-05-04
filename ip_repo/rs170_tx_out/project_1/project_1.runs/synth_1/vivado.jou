@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Mon Apr 24 19:34:56 2017
+# Process ID: 12428
+# Current directory: E:/P_2017/SEEDCORE/SIM/user_ip_repo/rs170_tx_out/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log rs170_tx_out.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rs170_tx_out.tcl
+# Log file: E:/P_2017/SEEDCORE/SIM/user_ip_repo/rs170_tx_out/project_1/project_1.runs/synth_1/rs170_tx_out.vds
+# Journal file: E:/P_2017/SEEDCORE/SIM/user_ip_repo/rs170_tx_out/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source rs170_tx_out.tcl -notrace

@@ -1,0 +1,54 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port HP_Interconnect_ACLK -pg 1 -y 120 -defaultsOSRD
+preplace port S_AXI_HP1 -pg 1 -y 120 -defaultsOSRD
+preplace port DDR -pg 1 -y 60 -defaultsOSRD
+preplace port pix_clk150 -pg 1 -y 580 -defaultsOSRD
+preplace port M01_AXI -pg 1 -y 240 -defaultsOSRD
+preplace port M03_AXI -pg 1 -y 260 -defaultsOSRD
+preplace port axi_lite_CLK -pg 1 -y 100 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 80 -defaultsOSRD
+preplace port M02_AXI -pg 1 -y 200 -defaultsOSRD
+preplace port S_AXI_HP0 -pg 1 -y 100 -defaultsOSRD
+preplace port M00_AXI -pg 1 -y 220 -defaultsOSRD
+preplace portBus intr_0 -pg 1 -y 190 -defaultsOSRD
+preplace portBus intr_1 -pg 1 -y 210 -defaultsOSRD
+preplace portBus per_pix_aresetn150 -pg 1 -y 600 -defaultsOSRD
+preplace portBus axi_lite_ARESETN -pg 1 -y 710 -defaultsOSRD
+preplace portBus HP_peripheral_aresetn -pg 1 -y 730 -defaultsOSRD
+preplace portBus HP_interconnect_aresetn -pg 1 -y 750 -defaultsOSRD
+preplace inst rst_ps7_0_50M -pg 1 -lvl 2 -y 370 -defaultsOSRD
+preplace inst rst_ps7_0_250M -pg 1 -lvl 2 -y 570 -defaultsOSRD
+preplace inst PL2PS_IRQ -pg 1 -lvl 1 -y 200 -defaultsOSRD
+preplace inst pix_clk -pg 1 -lvl 3 -y 630 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 3 -y 220 -defaultsOSRD
+preplace inst rst_ps7_0_100M1 -pg 1 -lvl 3 -y 480 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -y 130 -defaultsOSRD
+preplace netloc ps7_0_axi_periph_M02_AXI 1 3 1 1130
+preplace netloc S_AXI_HP0_1 1 0 2 NJ 100 NJ
+preplace netloc processing_system7_0_DDR 1 2 2 680J 30 1120J
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 1 700
+preplace netloc S_AXI_HP1_1 1 0 2 NJ 120 NJ
+preplace netloc ARESETN_1 1 2 1 730
+preplace netloc rst_ps7_0_250M_interconnect_aresetn 1 2 2 690J 750 NJ
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 220 470 700
+preplace netloc ps7_0_axi_periph_M03_AXI 1 3 1 1110
+preplace netloc ps7_0_axi_periph_M01_AXI 1 3 1 1110
+preplace netloc PL2PS_IRQ_dout 1 1 1 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 2 2 700J 40 1100J
+preplace netloc clk_150_200_150_clk_out1 1 2 2 750 690 1110J
+preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 2 2 740 710 NJ
+preplace netloc rst_ps7_0_250M_peripheral_aresetn 1 2 2 680J 730 NJ
+preplace netloc PL_Switch_ip2intc_irpt 1 0 1 NJ
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 3 200 270 720 10 1130J
+preplace netloc ps7_0_axi_periph_M00_AXI 1 3 1 1120J
+preplace netloc processing_system7_0_FCLK_CLK1 1 2 1 710
+preplace netloc In1_1 1 0 1 N
+preplace netloc proc_sys_reset_150M_peripheral_aresetn 1 2 2 760 700 1130J
+preplace netloc processing_system7_0_FCLK_CLK2 1 1 3 210 260 690 20 1110
+levelinfo -pg 1 0 110 450 930 1200 -top 0 -bot 770
+"
+}
+

@@ -1,0 +1,34 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port periphera_ARESETN -pg 1 -y 120 -defaultsOSRD
+preplace port S_AXI_LITE -pg 1 -y 190 -defaultsOSRD
+preplace port pix_clk -pg 1 -y 250 -defaultsOSRD
+preplace port Interconnect_ARESETN -pg 1 -y 90 -defaultsOSRD
+preplace port Interconnect_ACLK -pg 1 -y 230 -defaultsOSRD
+preplace port axi_resetn -pg 1 -y 270 -defaultsOSRD
+preplace port M_AXIS_MM2S -pg 1 -y 230 -defaultsOSRD
+preplace port s_axi_lite_aclk -pg 1 -y 210 -defaultsOSRD
+preplace port M00_AXI -pg 1 -y 110 -defaultsOSRD
+preplace portBus mm2s_frame_ptr_in -pg 1 -y 290 -defaultsOSRD
+preplace inst mm2s_ila -pg 1 -lvl 2 -y 370 -defaultsOSRD
+preplace inst axi_vdma_mm2s -pg 1 -lvl 1 -y 240 -defaultsOSRD
+preplace inst axi_mm2s_interconnect -pg 1 -lvl 2 -y 110 -defaultsOSRD
+preplace netloc S_AXI_LITE_1 1 0 1 NJ
+preplace netloc axi_vdma_mm2s_M_AXIS_MM2S 1 1 3 NJ 230 NJ 230 NJ
+preplace netloc ACLK_1 1 0 2 20 130 400
+preplace netloc m_axis_mm2s_aclk_1 1 0 2 20 350 NJ
+preplace netloc ARESETN_1 1 0 2 NJ 90 NJ
+preplace netloc axi_vdma_mm2s_mm2s_frame_ptr_out 1 1 1 410
+preplace netloc axi_mm2s_interconnect_M00_AXI 1 2 2 NJ 110 N
+preplace netloc axi_vdma_mm2s_M_AXI_MM2S 1 1 1 390
+preplace netloc axi_resetn_1 1 0 1 NJ
+preplace netloc M00_ARESETN_1 1 0 2 NJ 120 410
+preplace netloc axi_vdma_mm2s_mm2s_introut 1 1 1 400
+preplace netloc mm2s_frame_ptr_in_1 1 0 1 NJ
+preplace netloc s_axi_lite_aclk_1 1 0 1 NJ
+levelinfo -pg 1 0 210 560 820 940 -top -70 -bot 450
+"
+}
+0

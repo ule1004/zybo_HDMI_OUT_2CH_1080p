@@ -1,0 +1,278 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Jun 28 21:42:35 2017
+# Process ID: 14212
+# Current directory: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log rs170_std_out_ctrl.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rs170_std_out_ctrl.tcl
+# Log file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/project_1/project_1.runs/synth_1/rs170_std_out_ctrl.vds
+# Journal file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source rs170_std_out_ctrl.tcl -notrace
+Command: synth_design -top rs170_std_out_ctrl -part xc7z030ffg676-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z030'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z030'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 4284 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 323.668 ; gain = 113.281
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'rs170_std_out_ctrl' [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/rs170_std_out_ctrl.vhd:38]
+INFO: [Synth 8-637] synthesizing blackbox instance 'rs170_std_out_ctrl_ngc_i' of component 'rs170_std_out_ctrl_ngc' [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/rs170_std_out_ctrl.vhd:65]
+INFO: [Synth 8-256] done synthesizing module 'rs170_std_out_ctrl' (1#1) [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/rs170_std_out_ctrl.vhd:38]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 360.980 ; gain = 150.594
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 360.980 ; gain = 150.594
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z030ffg676-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 360.980 ; gain = 150.594
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 360.980 ; gain = 150.594
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z030ffg676-2
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 400 (col length:80)
+BRAMs: 530 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 506.820 ; gain = 296.434
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 506.820 ; gain = 296.434
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+-----------------------+----------+
+|      |BlackBox name          |Instances |
++------+-----------------------+----------+
+|1     |rs170_std_out_ctrl_ngc |         1|
++------+-----------------------+----------+
+
+Report Cell Usage: 
++------+----------------------------+------+
+|      |Cell                        |Count |
++------+----------------------------+------+
+|1     |rs170_std_out_ctrl_ngc_bbox |     1|
+|2     |IBUF                        |    17|
+|3     |OBUF                        |    14|
++------+----------------------------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |    45|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 511.449 ; gain = 262.574
+Synthesis Optimization Complete : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 511.449 ; gain = 301.063
+INFO: [Project 1-571] Translating synthesized netlist
+Parsing EDIF File [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/rs170_std_out_ctrl_ngc.edn]
+Finished Parsing EDIF File [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/rs170_std_out_ctrl_ngc.edn]
+INFO: [Netlist 29-17] Analyzing 47 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.4
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/clk_27mhz_IBUF_inst, from the path connected to top-level port: clk_27mhz 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[0]_inst, from the path connected to top-level port: i_data[0] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[1]_inst, from the path connected to top-level port: i_data[1] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[2]_inst, from the path connected to top-level port: i_data[2] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[3]_inst, from the path connected to top-level port: i_data[3] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[4]_inst, from the path connected to top-level port: i_data[4] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[5]_inst, from the path connected to top-level port: i_data[5] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[6]_inst, from the path connected to top-level port: i_data[6] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_data_IBUF[7]_inst, from the path connected to top-level port: i_data[7] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_de_IBUF_inst, from the path connected to top-level port: i_de 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_fid_IBUF_inst, from the path connected to top-level port: i_fid 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_lock_IBUF_inst, from the path connected to top-level port: i_lock 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_vb_IBUF_inst, from the path connected to top-level port: i_vb 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/i_vs_IBUF_inst, from the path connected to top-level port: i_vs 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, rs170_std_out_ctrl_ngc_i/reset_n_IBUF_inst, from the path connected to top-level port: reset_n 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_blank_OBUF_inst, from the path connected to top-level port: rs170_blank 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_clk_OBUF_inst, from the path connected to top-level port: rs170_clk 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[0]_inst, from the path connected to top-level port: rs170_data[0] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[1]_inst, from the path connected to top-level port: rs170_data[1] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[2]_inst, from the path connected to top-level port: rs170_data[2] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[3]_inst, from the path connected to top-level port: rs170_data[3] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[4]_inst, from the path connected to top-level port: rs170_data[4] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[5]_inst, from the path connected to top-level port: rs170_data[5] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[6]_inst, from the path connected to top-level port: rs170_data[6] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_data_OBUF[7]_inst, from the path connected to top-level port: rs170_data[7] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_field_OBUF_inst, from the path connected to top-level port: rs170_field 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_hsync_OBUF_inst, from the path connected to top-level port: rs170_hsync 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_resetn_OBUF_inst, from the path connected to top-level port: rs170_resetn 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, rs170_vsync_OBUF_inst, from the path connected to top-level port: rs170_vsync 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+14 Infos, 29 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 599.766 ; gain = 360.297
+INFO: [Common 17-1381] The checkpoint 'E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/project_1/project_1.runs/synth_1/rs170_std_out_ctrl.dcp' has been generated.
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 599.766 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Jun 28 21:42:49 2017...

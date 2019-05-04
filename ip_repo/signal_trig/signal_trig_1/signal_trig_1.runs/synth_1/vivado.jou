@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Jun 28 12:36:34 2017
+# Process ID: 13100
+# Current directory: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/signal_trig/signal_trig_1/signal_trig_1.runs/synth_1
+# Command line: vivado.exe -log signal_trig.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source signal_trig.tcl
+# Log file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/signal_trig/signal_trig_1/signal_trig_1.runs/synth_1/signal_trig.vds
+# Journal file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/signal_trig/signal_trig_1/signal_trig_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source signal_trig.tcl -notrace

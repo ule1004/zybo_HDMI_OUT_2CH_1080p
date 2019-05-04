@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Thu Jul 20 17:03:33 2017
+# Process ID: 6012
+# Current directory: E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log v_in_crop_scale_axis.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source v_in_crop_scale_axis.tcl
+# Log file: E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1/v_in_crop_scale_axis.vds
+# Journal file: E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source v_in_crop_scale_axis.tcl -notrace

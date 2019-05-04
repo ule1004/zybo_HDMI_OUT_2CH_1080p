@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7z030ffg676-2" LaunchTime="1498653754">
+  <File Type="RDS-PROPCONSTRS" Name="rs170_std_out_ctrl_drc_synth.rpt"/>
+  <File Type="PA-TCL" Name="rs170_std_out_ctrl.tcl"/>
+  <File Type="RDS-RDS" Name="rs170_std_out_ctrl.vds"/>
+  <File Type="RDS-UTIL" Name="rs170_std_out_ctrl_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="rs170_std_out_ctrl_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="rs170_std_out_ctrl.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="rs170_std_out_ctrl_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="rs170_std_out_ctrl_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../rs170_std_out_ctrl_ngc.edn">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../rs170_std_out_ctrl.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../../../../../../p_2017/seedcore/sim/user_ip_repo/rs170_std_out_ctrl/component.xml">
+      <FileInfo SFType="IPXACT"/>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="rs170_std_out_ctrl"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

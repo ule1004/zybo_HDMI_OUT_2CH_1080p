@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7z045ffg900-3" LaunchTime="1498619782">
+  <File Type="RDS-PROPCONSTRS" Name="axis_s2_m1_sw_drc_synth.rpt"/>
+  <File Type="PA-TCL" Name="axis_s2_m1_sw.tcl"/>
+  <File Type="RDS-RDS" Name="axis_s2_m1_sw.vds"/>
+  <File Type="RDS-UTIL" Name="axis_s2_m1_sw_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="axis_s2_m1_sw_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="axis_s2_m1_sw.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="axis_s2_m1_sw_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="axis_s2_m1_sw_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../axis_s2_m1_sw_ngc.edn">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../axis_s2_m1_sw_ngc.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../axis_s2_m1_sw.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../../../../../../p_2017/seedcore/rtl/final/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/component.xml">
+      <FileInfo SFType="IPXACT"/>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="axis_s2_m1_sw"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Thu Jun 29 18:16:51 2017
+# Process ID: 10472
+# Current directory: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/vid_in_24b_axis/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log vid_in_24b_axis.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source vid_in_24b_axis.tcl
+# Log file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/vid_in_24b_axis/project_1/project_1.runs/synth_1/vid_in_24b_axis.vds
+# Journal file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/vid_in_24b_axis/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source vid_in_24b_axis.tcl -notrace

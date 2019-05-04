@@ -1,0 +1,309 @@
+
+*** Running vivado
+    with args -log v_in_crop_scale_axis.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source v_in_crop_scale_axis.tcl
+
+
+****** Vivado v2016.4 (64-bit)
+  **** SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+  **** IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source v_in_crop_scale_axis.tcl -notrace
+Command: synth_design -top v_in_crop_scale_axis -part xq7z030rf676-1Q
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xq7z030'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xq7z030'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 10080 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 333.176 ; gain = 123.695
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'v_in_crop_scale_axis' [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:23]
+	Parameter DATA_WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'axis_bridge_fifo' [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1/.Xil/Vivado-6012-jundesk2/realtime/axis_bridge_fifo_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'axis_bridge_fifo' (1#1) [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1/.Xil/Vivado-6012-jundesk2/realtime/axis_bridge_fifo_stub.v:6]
+WARNING: [Synth 8-3936] Found unconnected internal register 'd_arst_reg' and it is trimmed from '16' to '15' bits. [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:147]
+WARNING: [Synth 8-3936] Found unconnected internal register 'd_vrst_reg' and it is trimmed from '16' to '15' bits. [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:142]
+INFO: [Synth 8-4471] merging register 'd_s_v_data_0_reg[15:0]' into 'd_c_v_data_0_reg[15:0]' [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:206]
+INFO: [Synth 8-256] done synthesizing module 'v_in_crop_scale_axis' (2#1) [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:23]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 368.590 ; gain = 159.109
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 368.590 ; gain = 159.109
+---------------------------------------------------------------------------------
+WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'axis_bridge_fifo' instantiated as 'axis_bridge_fifo_i' [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:361]
+INFO: [Device 21-403] Loading part xq7z030rf676-1Q
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1/.Xil/Vivado-6012-jundesk2/dcp/axis_bridge_fifo_in_context.xdc] for cell 'axis_bridge_fifo_i'
+Finished Parsing XDC File [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1/.Xil/Vivado-6012-jundesk2/dcp/axis_bridge_fifo_in_context.xdc] for cell 'axis_bridge_fifo_i'
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 693.434 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xq7z030rf676-1Q
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 'd_vrst_reg' and it is trimmed from '15' to '14' bits. [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:142]
+WARNING: [Synth 8-3936] Found unconnected internal register 'd_arst_reg' and it is trimmed from '15' to '14' bits. [E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/v_in_crop_scale_axis.v:147]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 2     
+	               14 Bit    Registers := 2     
+	                4 Bit    Registers := 7     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 13    
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 8     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module v_in_crop_scale_axis 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 2     
+	               14 Bit    Registers := 2     
+	                4 Bit    Registers := 7     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 13    
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 8     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 400 (col length:80)
+BRAMs: 530 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'd_rd_keep_reg[0]' (FDR) to 'd_rd_keep_reg[1]'
+WARNING: [Synth 8-3332] Sequential element (d_valid_t0_reg[3]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_valid_t0_reg[2]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_eol_de_reg[3]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_eol_de_reg[2]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_eol_de_reg[1]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_c_v_de_reg[3]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_c_v_de_reg[2]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_c_v_de_reg[1]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_v_de_reg[3]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_v_de_reg[2]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_v_de_reg[1]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_v_sof_reg[3]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_v_sof_reg[2]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_s_v_sof_reg[1]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_c_v_sof_reg[3]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_c_v_sof_reg[2]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_c_v_sof_reg[1]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_rd_en_t0_reg[3]) is unused and will be removed from module v_in_crop_scale_axis.
+WARNING: [Synth 8-3332] Sequential element (d_rd_en_t0_reg[2]) is unused and will be removed from module v_in_crop_scale_axis.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+-----------------+----------+
+|      |BlackBox name    |Instances |
++------+-----------------+----------+
+|1     |axis_bridge_fifo |         1|
++------+-----------------+----------+
+
+Report Cell Usage: 
++------+-----------------+------+
+|      |Cell             |Count |
++------+-----------------+------+
+|1     |axis_bridge_fifo |     1|
+|2     |BUFG             |     2|
+|3     |CARRY4           |     4|
+|4     |LUT1             |    17|
+|5     |LUT2             |     4|
+|6     |LUT3             |     3|
+|7     |LUT4             |     8|
+|8     |LUT5             |     6|
+|9     |LUT6             |     8|
+|10    |FDRE             |    56|
+|11    |FDSE             |    18|
+|12    |IBUF             |    27|
+|13    |OBUF             |    28|
++------+-----------------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |   217|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 21 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 693.434 ; gain = 87.234
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 693.434 ; gain = 483.953
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 31 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+18 Infos, 24 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 693.434 ; gain = 446.914
+INFO: [Common 17-1381] The checkpoint 'E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/synth_1/v_in_crop_scale_axis.dcp' has been generated.
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 693.434 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 20 17:03:57 2017...

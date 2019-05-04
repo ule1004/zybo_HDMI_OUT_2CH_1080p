@@ -1,0 +1,1480 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Apr 26 23:19:58 2019
+# Process ID: 4880
+# Current directory: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7460 C:\Xilinx\workspace\2018.3\zybo_GrabberBoard\system\system.xpr
+# Log file: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/vivado.log
+# Journal file: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.xpr
+INFO: [Project 1-313] Project file moved from '/mnt/Workspace/Xilinx/Workspace/2018.3/zybo_GrabberBoard/system' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:12 . Memory (MB): peak = 796.809 ; gain = 209.320
+open_bd_design {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd}
+Adding cell -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - PL_Switch
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - PL2PS_IRQ
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_50M
+Adding cell -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0
+Successfully read diagram <system> from BD file <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd>
+update_compile_order -fileset sources_1
+set_property  ip_repo_paths  C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/ip_repo [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/ip_repo'.
+CRITICAL WARNING: [IP_Flow 19-1663] Duplicate IP found for 'digilentinc.com:ip:rgb2vga:1.0'. The one found in IP location 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/ip_repo/local/ip/rgb2vga_v1_0' will take precedence over the same IP in location c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/ip_repo/rgb2vga_v1_0
+startgroup
+create_bd_cell -type ip -vlnv digilentinc.com:ip:rgb2dvi:1.4 rgb2dvi_0
+endgroup
+delete_bd_objs [get_bd_cells rgb2dvi_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.3 axi_vdma_0
+endgroup
+set_property name axi_vdma_s2mm [get_bd_cells axi_vdma_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.3 axi_vdma_0
+endgroup
+set_property name axi_vdma_mm2s [get_bd_cells axi_vdma_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:v_tpg:8.0 v_tpg_0
+endgroup
+set_property -dict [list CONFIG.SAMPLES_PER_CLOCK {2}] [get_bd_cells v_tpg_0]
+set_property -dict [list CONFIG.FOREGROUND {1}] [get_bd_cells v_tpg_0]
+set_property -dict [list CONFIG.SAMPLES_PER_CLOCK {2} CONFIG.MAX_DATA_WIDTH {8} CONFIG.HAS_AXI4S_SLAVE {1}] [get_bd_cells v_tpg_0]
+set_property -dict [list CONFIG.HAS_AXI4S_SLAVE {0}] [get_bd_cells v_tpg_0]
+set_property location {1 138 562} [get_bd_cells v_tpg_0]
+set_property name v_tpg [get_bd_cells v_tpg_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0
+endgroup
+set_property name axi_s2mm_interconnect [get_bd_cells axi_interconnect_0]
+group_bd_cells vdma_in_s2mm [get_bd_cells axi_vdma_s2mm] [get_bd_cells axi_s2mm_interconnect]
+set_property location {2 596 616} [get_bd_cells vdma_in_s2mm]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0
+endgroup
+set_property name axi_mm2s_interconnect [get_bd_cells axi_interconnect_0]
+group_bd_cells vdma_out_mm2s [get_bd_cells axi_vdma_mm2s] [get_bd_cells axi_mm2s_interconnect]
+set_property location {2 528 706} [get_bd_cells vdma_out_mm2s]
+group_bd_cells Zynq_system [get_bd_cells processing_system7_0] [get_bd_cells PL2PS_IRQ] [get_bd_cells rst_ps7_0_50M] [get_bd_cells clk_wiz_0] [get_bd_cells ps7_0_axi_periph]
+set_property -dict [list CONFIG.c_mm2s_genlock_mode {0} CONFIG.c_include_mm2s {0}] [get_bd_cells vdma_out_mm2s/axi_vdma_mm2s]
+set_property -dict [list CONFIG.c_mm2s_genlock_mode {3} CONFIG.c_s2mm_genlock_mode {0} CONFIG.c_include_mm2s {1} CONFIG.c_include_s2mm {0}] [get_bd_cells vdma_out_mm2s/axi_vdma_mm2s]
+set_property -dict [list CONFIG.c_m_axis_mm2s_tdata_width {48} CONFIG.c_num_fstores {1} CONFIG.c_mm2s_linebuffer_depth {2048} CONFIG.c_mm2s_max_burst_length {32} CONFIG.c_addr_width {48}] [get_bd_cells vdma_out_mm2s/axi_vdma_mm2s]
+set_property -dict [list CONFIG.c_num_fstores {1} CONFIG.c_mm2s_genlock_mode {0} CONFIG.c_s2mm_linebuffer_depth {2048} CONFIG.c_include_mm2s {0} CONFIG.c_s2mm_max_burst_length {64}] [get_bd_cells vdma_in_s2mm/axi_vdma_s2mm]
+set_property -dict [list CONFIG.c_num_fstores {3} CONFIG.c_addr_width {32}] [get_bd_cells vdma_out_mm2s/axi_vdma_mm2s]
+set_property -dict [list CONFIG.NUM_MI {1}] [get_bd_cells vdma_in_s2mm/axi_s2mm_interconnect]
+set_property -dict [list CONFIG.NUM_MI {1}] [get_bd_cells vdma_out_mm2s/axi_mm2s_interconnect]
+connect_bd_intf_net [get_bd_intf_pins vdma_out_mm2s/axi_vdma_mm2s/M_AXI_MM2S] -boundary_type upper [get_bd_intf_pins vdma_out_mm2s/axi_mm2s_interconnect/S00_AXI]
+connect_bd_intf_net [get_bd_intf_pins vdma_in_s2mm/axi_vdma_s2mm/M_AXI_S2MM] -boundary_type upper [get_bd_intf_pins vdma_in_s2mm/axi_s2mm_interconnect/S00_AXI]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 vdma_out_mm2s/ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /vdma_out_mm2s/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+endgroup
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.C_PROBE1_WIDTH {6} CONFIG.C_NUM_OF_PROBES {2} CONFIG.C_ENABLE_ILA_AXI_MON {false} CONFIG.C_MONITOR_TYPE {Native}] [get_bd_cells vdma_out_mm2s/ila_0]
+set_property name mm2s_ila [get_bd_cells vdma_out_mm2s/ila_0]
+connect_bd_net [get_bd_pins vdma_out_mm2s/axi_vdma_mm2s/mm2s_introut] [get_bd_pins vdma_out_mm2s/mm2s_ila/probe0]
+WARNING: [BD 41-1731] Type mismatch between connected pins: /vdma_out_mm2s/axi_vdma_mm2s/mm2s_introut(intr) and /vdma_out_mm2s/mm2s_ila/probe0(undef)
+connect_bd_net [get_bd_pins vdma_out_mm2s/axi_vdma_mm2s/mm2s_frame_ptr_out] [get_bd_pins vdma_out_mm2s/mm2s_ila/probe1]
+regenerate_bd_layout
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 vdma_in_s2mm/ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /vdma_in_s2mm/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+endgroup
+set_property name s2mm_ila [get_bd_cells vdma_in_s2mm/ila_0]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.C_PROBE1_WIDTH {6} CONFIG.C_NUM_OF_PROBES {2} CONFIG.C_ENABLE_ILA_AXI_MON {false} CONFIG.C_MONITOR_TYPE {Native}] [get_bd_cells vdma_in_s2mm/s2mm_ila]
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/s2mm_introut] [get_bd_pins vdma_in_s2mm/s2mm_ila/probe0]
+WARNING: [BD 41-1731] Type mismatch between connected pins: /vdma_in_s2mm/axi_vdma_s2mm/s2mm_introut(intr) and /vdma_in_s2mm/s2mm_ila/probe0(undef)
+connect_bd_net [get_bd_pins vdma_in_s2mm/s2mm_ila/probe1] [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/s2mm_frame_ptr_out]
+regenerate_bd_layout
+connect_bd_intf_net [get_bd_intf_pins v_tpg/m_axis_video] [get_bd_intf_pins vdma_in_s2mm/axi_vdma_s2mm/S_AXIS_S2MM]
+startgroup
+set_property -dict [list CONFIG.SAMPLES_PER_CLOCK {1} CONFIG.MAX_COLS {1920} CONFIG.MAX_ROWS {1080}] [get_bd_cells v_tpg]
+endgroup
+delete_bd_objs [get_bd_intf_nets v_tpg_m_axis_video]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axis_subset_converter:1.1 axis_subset_converter_0
+endgroup
+set_property name axis_24to32_converter [get_bd_cells axis_subset_converter_0]
+set_property -dict [list CONFIG.S_TDATA_NUM_BYTES.VALUE_SRC USER CONFIG.M_TDATA_NUM_BYTES.VALUE_SRC USER CONFIG.S_HAS_TREADY.VALUE_SRC PROPAGATED] [get_bd_cells axis_24to32_converter]
+set_property -dict [list CONFIG.S_TDATA_NUM_BYTES {3} CONFIG.M_TDATA_NUM_BYTES {4} CONFIG.TDATA_REMAP {8'b00000000,tdata[23:0]}] [get_bd_cells axis_24to32_converter]
+connect_bd_intf_net [get_bd_intf_pins axis_24to32_converter/S_AXIS] [get_bd_intf_pins v_tpg/m_axis_video]
+undo
+INFO: [Common 17-17] undo 'connect_bd_intf_net [get_bd_intf_pins axis_24to32_converter/S_AXIS] [get_bd_intf_pins v_tpg/m_axis_video]'
+group_bd_cells TPG [get_bd_cells axis_24to32_converter] [get_bd_cells v_tpg]
+connect_bd_intf_net [get_bd_intf_pins TPG/v_tpg/m_axis_video] [get_bd_intf_pins TPG/axis_24to32_converter/S_AXIS]
+connect_bd_intf_net [get_bd_intf_pins TPG/axis_24to32_converter/M_AXIS] -boundary_type upper [get_bd_intf_pins vdma_in_s2mm/S_AXIS_S2MM]
+set_property name AXIS_TPG [get_bd_intf_pins TPG/M_AXIS]
+AXIS_TPG
+regenerate_bd_layout
+set_property name clk_150_200_150 [get_bd_cells Zynq_system/clk_wiz_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 Zynq_system/proc_sys_reset_0
+endgroup
+set_property name proc_sys_reset_150M [get_bd_cells Zynq_system/proc_sys_reset_0]
+connect_bd_net [get_bd_pins Zynq_system/processing_system7_0/FCLK_RESET0_N] [get_bd_pins Zynq_system/proc_sys_reset_150M/ext_reset_in]
+connect_bd_net [get_bd_pins Zynq_system/clk_150_200_150/clk_out1] [get_bd_pins Zynq_system/proc_sys_reset_150M/slowest_sync_clk]
+regenerate_bd_layout -hierarchy [get_bd_cells Zynq_system]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 Zynq_system/proc_sys_reset_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 Zynq_system/proc_sys_reset_1
+endgroup
+set_property name proc_sys_reset_200M [get_bd_cells Zynq_system/proc_sys_reset_0]
+set_property name proc_sys_reset_250M [get_bd_cells Zynq_system/proc_sys_reset_1]
+connect_bd_net [get_bd_pins Zynq_system/proc_sys_reset_200M/slowest_sync_clk] [get_bd_pins Zynq_system/clk_150_200_150/clk_out2]
+startgroup
+connect_bd_net [get_bd_pins Zynq_system/proc_sys_reset_200M/ext_reset_in] [get_bd_pins Zynq_system/processing_system7_0/FCLK_RESET0_N]
+endgroup
+connect_bd_net [get_bd_pins Zynq_system/proc_sys_reset_250M/ext_reset_in] [get_bd_pins Zynq_system/processing_system7_0/FCLK_RESET0_N]
+connect_bd_net [get_bd_pins Zynq_system/proc_sys_reset_250M/slowest_sync_clk] [get_bd_pins Zynq_system/clk_150_200_150/clk_out3]
+regenerate_bd_layout -hierarchy [get_bd_cells Zynq_system]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 Zynq_system/proc_sys_reset_0
+endgroup
+set_property name rst_ps7_0_100M [get_bd_cells Zynq_system/proc_sys_reset_0]
+copy_bd_objs Zynq_system  [get_bd_cells {Zynq_system/rst_ps7_0_100M}]
+set_property name rst_ps7_0_1250M [get_bd_cells Zynq_system/rst_ps7_0_100M]
+set_property name rst_ps7_0_250M [get_bd_cells Zynq_system/rst_ps7_0_1250M]
+connect_bd_net [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK1] [get_bd_pins Zynq_system/rst_ps7_0_100M1/slowest_sync_clk]
+connect_bd_net [get_bd_pins Zynq_system/processing_system7_0/FCLK_RESET0_N] [get_bd_pins Zynq_system/rst_ps7_0_100M1/ext_reset_in]
+connect_bd_net [get_bd_pins Zynq_system/rst_ps7_0_250M/slowest_sync_clk] [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK2]
+connect_bd_net [get_bd_pins Zynq_system/rst_ps7_0_250M/ext_reset_in] [get_bd_pins Zynq_system/processing_system7_0/FCLK_RESET0_N]
+regenerate_bd_layout -hierarchy [get_bd_cells Zynq_system]
+connect_bd_net [get_bd_pins TPG/v_tpg/ap_clk] [get_bd_pins Zynq_system/clk_150_200_150/clk_out1]
+set_property name pix_clk150 [get_bd_pins Zynq_system/clk_out1]
+connect_bd_net [get_bd_pins Zynq_system/proc_sys_reset_150M/peripheral_aresetn] [get_bd_pins TPG/v_tpg/ap_rst_n]
+set_property name pix_clk [get_bd_nets ap_clk_1]
+undo
+INFO: [Common 17-17] undo 'set_property name pix_clk [get_bd_nets ap_clk_1]'
+set_property name pix_clk [get_bd_pins TPG/ap_clk]
+set_property name pix_clk [get_bd_nets ap_clk_1]
+set_property name pix_rst_n [get_bd_pins TPG/ap_rst_n]
+set_property name per_pix_aresetn150 [get_bd_pins Zynq_system/peripheral_aresetn]
+connect_bd_net [get_bd_pins TPG/pix_clk] [get_bd_pins TPG/axis_24to32_converter/aclk]
+connect_bd_net [get_bd_pins TPG/pix_rst_n] [get_bd_pins TPG/axis_24to32_converter/aresetn]
+regenerate_bd_layout
+group_bd_cells pix_clk_reset [get_bd_cells Zynq_system/proc_sys_reset_200M] [get_bd_cells Zynq_system/proc_sys_reset_150M] [get_bd_cells Zynq_system/proc_sys_reset_250M]
+group_bd_cells pix_clk [get_bd_cells Zynq_system/clk_150_200_150] [get_bd_cells Zynq_system/pix_clk_reset]
+regenerate_bd_layout -hierarchy [get_bd_cells Zynq_system]
+regenerate_bd_layout
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins vdma_in_s2mm/axi_s2mm_interconnect/M00_AXI] [get_bd_intf_pins Zynq_system/processing_system7_0/S_AXI_HP0]
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins vdma_out_mm2s/axi_mm2s_interconnect/M00_AXI] [get_bd_intf_pins Zynq_system/processing_system7_0/S_AXI_HP1]
+connect_bd_net [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK2] [get_bd_pins vdma_in_s2mm/axi_s2mm_interconnect/ACLK]
+connect_bd_net [get_bd_pins vdma_in_s2mm/ACLK] [get_bd_pins vdma_in_s2mm/axi_s2mm_interconnect/S00_ACLK]
+connect_bd_net [get_bd_pins vdma_in_s2mm/ACLK] [get_bd_pins vdma_in_s2mm/axi_s2mm_interconnect/M00_ACLK]
+set_property name Interconnect_ACLK [get_bd_pins vdma_in_s2mm/ACLK]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins vdma_out_mm2s/axi_mm2s_interconnect/ACLK] [get_bd_pins Zynq_system/FCLK_CLK2] -boundary_type upper
+set_property name Interconnect_ACLK [get_bd_pins vdma_out_mm2s/ACLK]
+startgroup
+connect_bd_net [get_bd_pins vdma_out_mm2s/Interconnect_ACLK] [get_bd_pins vdma_out_mm2s/axi_mm2s_interconnect/S00_ACLK]
+endgroup
+connect_bd_net [get_bd_pins vdma_out_mm2s/Interconnect_ACLK] [get_bd_pins vdma_out_mm2s/axi_mm2s_interconnect/M00_ACLK]
+set_property name HP_Interconnect_ACLK [get_bd_pins Zynq_system/FCLK_CLK2]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/m_axi_s2mm_aclk] [get_bd_pins Zynq_system/HP_Interconnect_ACLK]
+connect_bd_net [get_bd_pins vdma_out_mm2s/Interconnect_ACLK] [get_bd_pins vdma_out_mm2s/axi_vdma_mm2s/m_axi_mm2s_aclk]
+connect_bd_net [get_bd_pins vdma_out_mm2s/axi_mm2s_interconnect/M00_ARESETN] [get_bd_pins Zynq_system/rst_ps7_0_250M/peripheral_aresetn]
+set_property name HP_peripheral_aresetn [get_bd_pins Zynq_system/peripheral_aresetn]
+set_property name periphera_ARESETN [get_bd_pins vdma_out_mm2s/M00_ARESETN]
+startgroup
+connect_bd_net [get_bd_pins vdma_out_mm2s/periphera_ARESETN] [get_bd_pins vdma_out_mm2s/axi_mm2s_interconnect/S00_ARESETN]
+endgroup
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_s2mm_interconnect/S00_ARESETN] [get_bd_pins Zynq_system/HP_peripheral_aresetn] -boundary_type upper
+connect_bd_net [get_bd_pins vdma_in_s2mm/S00_ARESETN] [get_bd_pins vdma_in_s2mm/axi_s2mm_interconnect/M00_ARESETN]
+set_property name periphera_ARESETN [get_bd_pins vdma_in_s2mm/S00_ARESETN]
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_s2mm_interconnect/ARESETN] [get_bd_pins Zynq_system/rst_ps7_0_250M/interconnect_aresetn]
+set_property name HP_interconnect_aresetn [get_bd_pins Zynq_system/interconnect_aresetn]
+set_property name Interconnect_ARESETN [get_bd_pins vdma_in_s2mm/ARESETN]
+connect_bd_net [get_bd_pins vdma_out_mm2s/axi_mm2s_interconnect/ARESETN] [get_bd_pins Zynq_system/HP_interconnect_aresetn] -boundary_type upper
+set_property name Interconnect_ARESETN [get_bd_pins vdma_out_mm2s/ARESETN]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins Zynq_system/FCLK_CLK0] [get_bd_pins vdma_out_mm2s/axi_vdma_mm2s/s_axi_lite_aclk]
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/s_axi_lite_aclk] [get_bd_pins Zynq_system/FCLK_CLK0]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins vdma_out_mm2s/axi_vdma_mm2s/axi_resetn] [get_bd_pins Zynq_system/rst_ps7_0_50M/peripheral_aresetn]
+disconnect_bd_net /Zynq_system/rst_ps7_0_50M_peripheral_aresetn [get_bd_pins Zynq_system/ps7_0_axi_periph/ARESETN]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/ARESETN] [get_bd_pins Zynq_system/rst_ps7_0_50M/interconnect_aresetn]
+set_property name axi_lite_CLK [get_bd_pins Zynq_system/FCLK_CLK0]
+set_property name axi_lite_ARESETN [get_bd_pins Zynq_system/S00_ARESETN]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/axi_resetn] [get_bd_pins Zynq_system/axi_lite_ARESETN]
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/s_axis_s2mm_aclk] [get_bd_pins Zynq_system/pix_clk150]
+set_property name pxi_clk [get_bd_pins vdma_in_s2mm/s_axis_s2mm_aclk]
+set_property name pix_clk [get_bd_pins vdma_in_s2mm/pxi_clk]
+connect_bd_net [get_bd_pins vdma_out_mm2s/axi_vdma_mm2s/m_axis_mm2s_aclk] [get_bd_pins Zynq_system/pix_clk150]
+set_property name pix_clk [get_bd_pins vdma_out_mm2s/m_axis_mm2s_aclk]
+startgroup
+connect_bd_net [get_bd_pins vdma_out_mm2s/pix_clk] [get_bd_pins vdma_out_mm2s/mm2s_ila/clk]
+endgroup
+connect_bd_net [get_bd_pins vdma_in_s2mm/pix_clk] [get_bd_pins vdma_in_s2mm/s2mm_ila/clk]
+startgroup
+set_property -dict [list CONFIG.NUM_MI {3}] [get_bd_cells Zynq_system/ps7_0_axi_periph]
+endgroup
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M01_AXI] [get_bd_intf_pins vdma_out_mm2s/axi_vdma_mm2s/S_AXI_LITE]
+undo
+INFO: [Common 17-17] undo 'connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M01_AXI] [get_bd_intf_pins vdma_out_mm2s/axi_vdma_mm2s/S_AXI_LITE]'
+connect_bd_intf_net [get_bd_intf_pins vdma_in_s2mm/axi_vdma_s2mm/S_AXI_LITE] -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M01_AXI]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M02_AXI] [get_bd_intf_pins vdma_out_mm2s/axi_vdma_mm2s/S_AXI_LITE]
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/s2mm_introut] [get_bd_pins vdma_out_mm2s/axi_vdma_mm2s/mm2s_frame_ptr_in]
+WARNING: [BD 41-1731] Type mismatch between connected pins: /vdma_out_mm2s/mm2s_frame_ptr_in(intr) and /vdma_out_mm2s/axi_vdma_mm2s/mm2s_frame_ptr_in(undef)
+connect_bd_net [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/s2mm_introut] [get_bd_pins Zynq_system/PL2PS_IRQ/In1]
+disconnect_bd_net /vdma_in_s2mm_s2mm_introut [get_bd_pins vdma_out_mm2s/mm2s_frame_ptr_in]
+connect_bd_net [get_bd_pins vdma_out_mm2s/mm2s_frame_ptr_in] [get_bd_pins vdma_in_s2mm/axi_vdma_s2mm/s2mm_frame_ptr_out]
+set_property name s2mm_interrupt [get_bd_pins vdma_in_s2mm/s2mm_introut]
+set_property name intr_1 [get_bd_pins Zynq_system/In1]
+set_property name intr_0 [get_bd_pins Zynq_system/In0]
+regenerate_bd_layout
+startgroup
+create_bd_cell -type ip -vlnv digilentinc.com:ip:rgb2dvi:1.4 rgb2dvi_0
+endgroup
+set_property location {3 1900 1485} [get_bd_cells rgb2dvi_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0
+endgroup
+set_property name rgb2dvi [get_bd_cells rgb2dvi_0]
+set_property name pix2 [get_bd_cells clk_wiz_0]
+delete_bd_objs [get_bd_cells pix2]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axis_subset_converter:1.1 axis_subset_converter_0
+endgroup
+set_property name axis_subset_converter [get_bd_cells axis_subset_converter_0]
+set_property name axis_32to24_converter [get_bd_cells axis_subset_converter]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:v_tc:6.1 v_tc_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:v_axi4s_vid_out:4.0 v_axi4s_vid_out_0
+endgroup
+group_bd_cells HDMI_OUT [get_bd_cells axis_32to24_converter] [get_bd_cells v_axi4s_vid_out_0] [get_bd_cells v_tc_0] [get_bd_cells rgb2dvi]
+set_property name hdmi_vid_out [get_bd_cells HDMI_OUT/v_axi4s_vid_out_0]
+set_property name v_tc [get_bd_cells HDMI_OUT/v_tc_0]
+set_property -dict [list CONFIG.M_TDATA_NUM_BYTES.VALUE_SRC USER CONFIG.S_TDATA_NUM_BYTES.VALUE_SRC USER] [get_bd_cells HDMI_OUT/axis_32to24_converter]
+set_property -dict [list CONFIG.S_TDATA_NUM_BYTES {4} CONFIG.M_TDATA_NUM_BYTES {3} CONFIG.TDATA_REMAP {tdata[23:0]}] [get_bd_cells HDMI_OUT/axis_32to24_converter]
+startgroup
+make_bd_intf_pins_external  [get_bd_intf_pins HDMI_OUT/rgb2dvi/TMDS]
+endgroup
+set_property name TMDS [get_bd_intf_ports TMDS_0]
+set_property name TMDS [get_bd_intf_pins HDMI_OUT/TMDS_0]
+TMDS
+set_property location {0.5 -225 110} [get_bd_cells HDMI_OUT/v_tc]
+set_property location {1 -354 382} [get_bd_cells HDMI_OUT/axis_32to24_converter]
+set_property location {2 182 580} [get_bd_cells HDMI_OUT/rgb2dvi]
+set_property location {2 133 112} [get_bd_cells HDMI_OUT/hdmi_vid_out]
+set_property location {2 172 350} [get_bd_cells HDMI_OUT/rgb2dvi]
+connect_bd_intf_net [get_bd_intf_pins HDMI_OUT/axis_32to24_converter/M_AXIS] [get_bd_intf_pins HDMI_OUT/hdmi_vid_out/video_in]
+set_property -dict [list CONFIG.HAS_AXI4_LITE {false} CONFIG.HAS_INTC_IF {true} CONFIG.VIDEO_MODE {1080p} CONFIG.GEN_F0_VSYNC_VSTART {1083} CONFIG.GEN_F1_VSYNC_VSTART {1083} CONFIG.GEN_HACTIVE_SIZE {1920} CONFIG.GEN_HSYNC_END {2052} CONFIG.GEN_HFRAME_SIZE {2200} CONFIG.GEN_F0_VSYNC_HSTART {1920} CONFIG.GEN_F1_VSYNC_HSTART {1920} CONFIG.GEN_F0_VSYNC_HEND {1920} CONFIG.GEN_F1_VSYNC_HEND {1920} CONFIG.GEN_F0_VFRAME_SIZE {1125} CONFIG.GEN_F1_VFRAME_SIZE {1125} CONFIG.GEN_F0_VSYNC_VEND {1088} CONFIG.GEN_F1_VSYNC_VEND {1088} CONFIG.GEN_F0_VBLANK_HEND {1920} CONFIG.GEN_F1_VBLANK_HEND {1920} CONFIG.GEN_HSYNC_START {2008} CONFIG.GEN_VACTIVE_SIZE {1080} CONFIG.GEN_F0_VBLANK_HSTART {1920} CONFIG.GEN_F1_VBLANK_HSTART {1920} CONFIG.enable_detection {false} CONFIG.enable_generation {true}] [get_bd_cells HDMI_OUT/v_tc]
+set_property -dict [list CONFIG.HAS_INTC_IF {false} CONFIG.enable_detection {false} CONFIG.enable_generation {true}] [get_bd_cells HDMI_OUT/v_tc]
+connect_bd_net [get_bd_pins HDMI_OUT/v_tc/active_video_out] [get_bd_pins HDMI_OUT/hdmi_vid_out/vtg_active_video]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/v_tc/active_video_out is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vtg_active_video is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_in
+connect_bd_net [get_bd_pins HDMI_OUT/v_tc/hblank_out] [get_bd_pins HDMI_OUT/hdmi_vid_out/vtg_hblank]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/v_tc/hblank_out is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vtg_hblank is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_in
+connect_bd_net [get_bd_pins HDMI_OUT/v_tc/hsync_out] [get_bd_pins HDMI_OUT/hdmi_vid_out/vtg_hsync]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/v_tc/hsync_out is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vtg_hsync is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_in
+connect_bd_net [get_bd_pins HDMI_OUT/v_tc/vblank_out] [get_bd_pins HDMI_OUT/hdmi_vid_out/vtg_vblank]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/v_tc/vblank_out is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vtg_vblank is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_in
+connect_bd_net [get_bd_pins HDMI_OUT/v_tc/vsync_out] [get_bd_pins HDMI_OUT/hdmi_vid_out/vtg_vsync]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/v_tc/vsync_out is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vtg_vsync is being overridden by the user. This pin will not be connected as a part of interface connection vtiming_in
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/vtg_ce] [get_bd_pins HDMI_OUT/v_tc/gen_clken]
+set_property location {2.5 451 225} [get_bd_cells HDMI_OUT/rgb2dvi]
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_data] [get_bd_pins HDMI_OUT/rgb2dvi/vid_pData]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vid_data is being overridden by the user. This pin will not be connected as a part of interface connection vid_io_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/rgb2dvi/vid_pData is being overridden by the user. This pin will not be connected as a part of interface connection RGB
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_active_video] [get_bd_pins HDMI_OUT/rgb2dvi/vid_pVDE]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vid_active_video is being overridden by the user. This pin will not be connected as a part of interface connection vid_io_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/rgb2dvi/vid_pVDE is being overridden by the user. This pin will not be connected as a part of interface connection RGB
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_hsync] [get_bd_pins HDMI_OUT/rgb2dvi/vid_pHSync]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vid_hsync is being overridden by the user. This pin will not be connected as a part of interface connection vid_io_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/rgb2dvi/vid_pHSync is being overridden by the user. This pin will not be connected as a part of interface connection RGB
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_vsync] [get_bd_pins HDMI_OUT/rgb2dvi/vid_pVSync]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vid_vsync is being overridden by the user. This pin will not be connected as a part of interface connection vid_io_out
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/rgb2dvi/vid_pVSync is being overridden by the user. This pin will not be connected as a part of interface connection RGB
+regenerate_bd_layout -hierarchy [get_bd_cells HDMI_OUT]
+connect_bd_net [get_bd_pins HDMI_OUT/rgb2dvi/PixelClk] [get_bd_pins HDMI_OUT/hdmi_vid_out/aclk]
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/aclk] [get_bd_pins HDMI_OUT/v_tc/clk]
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/aclk] [get_bd_pins HDMI_OUT/axis_32to24_converter/aclk]
+connect_bd_net [get_bd_pins HDMI_OUT/axis_32to24_converter/aresetn] [get_bd_pins HDMI_OUT/v_tc/resetn]
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/aresetn] [get_bd_pins HDMI_OUT/axis_32to24_converter/aresetn]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 HDMI_OUT/util_vector_logic_0
+endgroup
+set_property -dict [list CONFIG.C_SIZE {1} CONFIG.C_OPERATION {not} CONFIG.LOGO_FILE {data/sym_notgate.png}] [get_bd_cells HDMI_OUT/util_vector_logic_0]
+set_property name util_vector_logic_not [get_bd_cells HDMI_OUT/util_vector_logic_0]
+connect_bd_net [get_bd_pins HDMI_OUT/util_vector_logic_not/Op1] [get_bd_pins HDMI_OUT/axis_32to24_converter/aresetn]
+connect_bd_net [get_bd_pins HDMI_OUT/util_vector_logic_not/Res] [get_bd_pins HDMI_OUT/rgb2dvi/aRst]
+regenerate_bd_layout -hierarchy [get_bd_cells HDMI_OUT]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 HDMI_OUT/util_vector_logic_0
+endgroup
+set_property -dict [list CONFIG.C_SIZE {1}] [get_bd_cells HDMI_OUT/util_vector_logic_0]
+set_property name util_vector_logic_and [get_bd_cells HDMI_OUT/util_vector_logic_0]
+connect_bd_net [get_bd_pins HDMI_OUT/util_vector_logic_and/Res] [get_bd_pins HDMI_OUT/v_tc/clken]
+connect_bd_net [get_bd_pins HDMI_OUT/util_vector_logic_and/Res] [get_bd_pins HDMI_OUT/hdmi_vid_out/aclken]
+connect_bd_net [get_bd_pins HDMI_OUT/util_vector_logic_and/Op2] [get_bd_pins HDMI_OUT/axis_32to24_converter/aresetn]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 HDMI_OUT/xlconstant_0
+endgroup
+set_property name hdmi_high [get_bd_cells HDMI_OUT/xlconstant_0]
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_high/dout] [get_bd_pins HDMI_OUT/util_vector_logic_and/Op1]
+regenerate_bd_layout -hierarchy [get_bd_cells HDMI_OUT]
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_io_out_ce] [get_bd_pins HDMI_OUT/hdmi_high/dout]
+regenerate_bd_layout -hierarchy [get_bd_cells HDMI_OUT]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 HDMI_OUT/ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /HDMI_OUT/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+endgroup
+set_property name ila_video_out [get_bd_cells HDMI_OUT/ila_0]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.C_DATA_DEPTH {8192} CONFIG.C_NUM_OF_PROBES {11} CONFIG.C_ENABLE_ILA_AXI_MON {false} CONFIG.C_MONITOR_TYPE {Native}] [get_bd_cells HDMI_OUT/ila_video_out]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.C_PROBE1_WIDTH {24}] [get_bd_cells HDMI_OUT/ila_video_out]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/clk] [get_bd_pins HDMI_OUT/util_vector_logic_not/Res]
+set_property location {5 1346 145} [get_bd_cells HDMI_OUT/ila_video_out]
+connect_bd_net [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_active_video] [get_bd_pins HDMI_OUT/ila_video_out/probe0]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe1] [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_data]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe2] [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_field_id]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vid_field_id is being overridden by the user. This pin will not be connected as a part of interface connection vid_io_out
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe3] [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_hblank]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vid_hblank is being overridden by the user. This pin will not be connected as a part of interface connection vid_io_out
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe4] [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_hsync]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe5] [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_vblank]
+WARNING: [BD 41-1306] The connection to interface pin /HDMI_OUT/hdmi_vid_out/vid_vblank is being overridden by the user. This pin will not be connected as a part of interface connection vid_io_out
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe6] [get_bd_pins HDMI_OUT/hdmi_vid_out/vid_vsync]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe7] [get_bd_pins HDMI_OUT/hdmi_vid_out/vtg_ce]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe8] [get_bd_pins HDMI_OUT/hdmi_vid_out/locked]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe9] [get_bd_pins HDMI_OUT/hdmi_vid_out/overflow]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out/probe10] [get_bd_pins HDMI_OUT/hdmi_vid_out/underflow]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 HDMI_OUT/ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /HDMI_OUT/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+endgroup
+set_property name ila_video_out_stream [get_bd_cells HDMI_OUT/ila_0]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.C_DATA_DEPTH {8192} CONFIG.C_NUM_OF_PROBES {9} CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S}] [get_bd_cells HDMI_OUT/ila_video_out_stream]
+connect_bd_intf_net [get_bd_intf_pins HDMI_OUT/ila_video_out_stream/SLOT_0_AXIS] [get_bd_intf_pins HDMI_OUT/axis_32to24_converter/M_AXIS]
+connect_bd_net [get_bd_pins HDMI_OUT/ila_video_out_stream/clk] [get_bd_pins HDMI_OUT/v_tc/clk]
+regenerate_bd_layout -hierarchy [get_bd_cells HDMI_OUT]
+connect_bd_net [get_bd_pins HDMI_OUT/axis_32to24_converter/aclk] [get_bd_pins Zynq_system/pix_clk150]
+set_property name pix_clk [get_bd_pins HDMI_OUT/aclk]
+connect_bd_net [get_bd_pins HDMI_OUT/axis_32to24_converter/aresetn] [get_bd_pins Zynq_system/per_pix_aresetn150]
+set_property name pix_aresetn [get_bd_pins HDMI_OUT/aresetn]
+connect_bd_intf_net [get_bd_intf_pins HDMI_OUT/axis_32to24_converter/S_AXIS] [get_bd_intf_pins vdma_out_mm2s/axi_vdma_mm2s/M_AXIS_MM2S]
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M01_ARESETN] [get_bd_pins Zynq_system/rst_ps7_0_50M/peripheral_aresetn]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M02_ARESETN] [get_bd_pins Zynq_system/rst_ps7_0_50M/peripheral_aresetn]
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M02_ACLK] [get_bd_pins Zynq_system/ps7_0_axi_periph/M01_ACLK] -boundary_type upper
+connect_bd_net [get_bd_pins Zynq_system/ps7_0_axi_periph/M01_ACLK] [get_bd_pins Zynq_system/processing_system7_0/FCLK_CLK0]
+startgroup
+set_property -dict [list CONFIG.NUM_MI {4}] [get_bd_cells Zynq_system/ps7_0_axi_periph]
+endgroup
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins Zynq_system/ps7_0_axi_periph/M03_AXI] [get_bd_intf_pins TPG/v_tpg/s_axi_CTRL]
+connect_bd_net [get_bd_pins Zynq_system/pix_clk/pix_clk150] [get_bd_pins Zynq_system/ps7_0_axi_periph/M03_ACLK] -boundary_type upper
+connect_bd_net [get_bd_pins Zynq_system/pix_clk/per_pix_aresetn150] [get_bd_pins Zynq_system/ps7_0_axi_periph/M03_ARESETN] -boundary_type upper
+regenerate_bd_layout
+validate_bd_design
+CRITICAL WARNING: [BD 41-1356] Address block </Zynq_system/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM> is not mapped into </vdma_in_s2mm/axi_vdma_s2mm/Data_S2MM>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </TPG/v_tpg/s_axi_CTRL/Reg> is not mapped into </Zynq_system/processing_system7_0/Data>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </vdma_in_s2mm/axi_vdma_s2mm/S_AXI_LITE/Reg> is not mapped into </Zynq_system/processing_system7_0/Data>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </vdma_out_mm2s/axi_vdma_mm2s/S_AXI_LITE/Reg> is not mapped into </Zynq_system/processing_system7_0/Data>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </Zynq_system/processing_system7_0/S_AXI_HP1/HP1_DDR_LOWOCM> is not mapped into </vdma_out_mm2s/axi_vdma_mm2s/Data_MM2S>. Please use Address Editor to either map or exclude it.
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+CRITICAL WARNING: [BD 41-1356] Address block </Zynq_system/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM> is not mapped into </vdma_in_s2mm/axi_vdma_s2mm/Data_S2MM>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </TPG/v_tpg/s_axi_CTRL/Reg> is not mapped into </Zynq_system/processing_system7_0/Data>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </vdma_in_s2mm/axi_vdma_s2mm/S_AXI_LITE/Reg> is not mapped into </Zynq_system/processing_system7_0/Data>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </vdma_out_mm2s/axi_vdma_mm2s/S_AXI_LITE/Reg> is not mapped into </Zynq_system/processing_system7_0/Data>. Please use Address Editor to either map or exclude it.
+CRITICAL WARNING: [BD 41-1356] Address block </Zynq_system/processing_system7_0/S_AXI_HP1/HP1_DDR_LOWOCM> is not mapped into </vdma_out_mm2s/axi_vdma_mm2s/Data_MM2S>. Please use Address Editor to either map or exclude it.
+INFO: [xilinx.com:ip:axi_vdma:6.3-16] /vdma_out_mm2s/axi_vdma_mm2s 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+INFO: [xilinx.com:ip:axi_vdma:6.3-17] /vdma_in_s2mm/axi_vdma_s2mm 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+CRITICAL WARNING: [BD 41-237] Bus Interface property TDATA_NUM_BYTES does not match between /HDMI_OUT/axis_32to24_converter/S_AXIS(4) and /vdma_out_mm2s/axi_vdma_mm2s/M_AXIS_MM2S(6)
+WARNING: [BD 41-927] Following properties on pin /HDMI_OUT/rgb2dvi/PixelClk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=/Zynq_system/pix_clk/clk_150_200_150_clk_out1 
+validate_bd_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1928.543 ; gain = 26.637
+assign_bd_address
+</Zynq_system/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM> is being mapped into </vdma_in_s2mm/axi_vdma_s2mm/Data_S2MM> at <0x00000000 [ 1G ]>
+</Zynq_system/processing_system7_0/S_AXI_HP1/HP1_DDR_LOWOCM> is being mapped into </vdma_out_mm2s/axi_vdma_mm2s/Data_MM2S> at <0x00000000 [ 1G ]>
+</TPG/v_tpg/s_axi_CTRL/Reg> is being mapped into </Zynq_system/processing_system7_0/Data> at <0x43C00000 [ 64K ]>
+</vdma_in_s2mm/axi_vdma_s2mm/S_AXI_LITE/Reg> is being mapped into </Zynq_system/processing_system7_0/Data> at <0x43000000 [ 64K ]>
+</vdma_out_mm2s/axi_vdma_mm2s/S_AXI_LITE/Reg> is being mapped into </Zynq_system/processing_system7_0/Data> at <0x43010000 [ 64K ]>
+validate_bd_design
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+INFO: [xilinx.com:ip:axi_vdma:6.3-16] /vdma_out_mm2s/axi_vdma_mm2s 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+INFO: [xilinx.com:ip:axi_vdma:6.3-17] /vdma_in_s2mm/axi_vdma_s2mm 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+CRITICAL WARNING: [BD 41-237] Bus Interface property TDATA_NUM_BYTES does not match between /HDMI_OUT/axis_32to24_converter/S_AXIS(4) and /vdma_out_mm2s/axi_vdma_mm2s/M_AXIS_MM2S(6)
+WARNING: [BD 41-927] Following properties on pin /HDMI_OUT/rgb2dvi/PixelClk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=/Zynq_system/pix_clk/clk_150_200_150_clk_out1 
+startgroup
+endgroup
+validate_bd_design -force
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+INFO: [xilinx.com:ip:axi_vdma:6.3-16] /vdma_out_mm2s/axi_vdma_mm2s 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+INFO: [xilinx.com:ip:axi_vdma:6.3-17] /vdma_in_s2mm/axi_vdma_s2mm 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+CRITICAL WARNING: [BD 41-237] Bus Interface property TDATA_NUM_BYTES does not match between /HDMI_OUT/axis_32to24_converter/S_AXIS(4) and /vdma_out_mm2s/axi_vdma_mm2s/M_AXIS_MM2S(6)
+WARNING: [BD 41-927] Following properties on pin /HDMI_OUT/rgb2dvi/PixelClk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=/Zynq_system/pix_clk/clk_150_200_150_clk_out1 
+validate_bd_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2184.484 ; gain = 8.563
+startgroup
+set_property -dict [list CONFIG.c_num_fstores {1}] [get_bd_cells vdma_out_mm2s/axi_vdma_mm2s]
+endgroup
+startgroup
+set_property -dict [list CONFIG.c_m_axis_mm2s_tdata_width {32} CONFIG.c_mm2s_linebuffer_depth {2048}] [get_bd_cells vdma_out_mm2s/axi_vdma_mm2s]
+endgroup
+regenerate_bd_layout
+validate_bd_design
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+INFO: [xilinx.com:ip:axi_vdma:6.3-16] /vdma_out_mm2s/axi_vdma_mm2s 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+INFO: [xilinx.com:ip:axi_vdma:6.3-17] /vdma_in_s2mm/axi_vdma_s2mm 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+WARNING: [BD 41-927] Following properties on pin /HDMI_OUT/rgb2dvi/PixelClk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=/Zynq_system/pix_clk/clk_150_200_150_clk_out1 
+reset_target all [get_files  C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd]
+export_ip_user_files -of_objects  [get_files  C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd] -sync -no_script -force -quiet
+delete_ip_run [get_files -of_objects [get_fileset sources_1] C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd]
+make_wrapper -files [get_files C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd] -top
+INFO: [BD 41-1662] The design 'system.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : <C:\Xilinx\workspace\2018.3\zybo_GrabberBoard\system\system.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4c32cfbd.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4d7a76b6.ui> 
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hdl/system_wrapper.v
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4c32cfbd.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4d7a76b6.ui> 
+make_wrapper: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2280.102 ; gain = 80.461
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+INFO: [BD 41-1662] The design 'system.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4c32cfbd.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4d7a76b6.ui> 
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hdl/system_wrapper.v
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4c32cfbd.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4d7a76b6.ui> 
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PL_Switch .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/PL2PS_IRQ .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/rst_ps7_0_50M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/clk_150_200_150 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_in_s2mm/axi_vdma_s2mm .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_in_s2mm/axi_s2mm_interconnect/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_1/system_ila_0_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_in_s2mm/s2mm_ila .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_out_mm2s/axi_vdma_mm2s .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_1/system_auto_pc_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_out_mm2s/axi_mm2s_interconnect/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_0/system_ila_0_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_out_mm2s/mm2s_ila .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/ps7_0_axi_periph/xbar .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_2/system_auto_pc_2_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/ps7_0_axi_periph/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/rst_ps7_0_250M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/rst_ps7_0_100M1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_200M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_150M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_250M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block TPG/axis_24to32_converter .
+WARNING: [IP_Flow 19-1971] File named "sim/system_v_tpg_0_0.v" already exists in file group "xilinx_verilogsimulationwrapper", cannot add it again.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block TPG/v_tpg .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/axis_32to24_converter .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/hdmi_vid_out .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/v_tc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/rgb2dvi .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/util_vector_logic_not .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/util_vector_logic_and .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/hdmi_high .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_2/system_ila_0_2_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/ila_video_out .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_3/system_ila_0_3_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/ila_video_out_stream .
+Exporting to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_rst_ps7_0_50M_0, cache-ID = a20c51071e271b34; cache size = 2.297 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_2, cache-ID = cc42f6d4ec47da59; cache size = 2.297 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_axi_gpio_0_0, cache-ID = 4890b61829921168; cache size = 2.297 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_clk_wiz_0_0, cache-ID = 167c2a08cad88ec0; cache size = 2.297 MB.
+[Sat Apr 27 11:49:11 2019] Launched system_processing_system7_0_0_synth_1, system_auto_pc_1_synth_1, system_xbar_0_synth_1, system_proc_sys_reset_0_2_synth_1, system_rst_ps7_0_100M_0_synth_1, system_auto_pc_0_synth_1, system_ila_0_1_synth_1, system_auto_cc_0_synth_1, system_proc_sys_reset_1_0_synth_1, system_axis_subset_converter_0_0_synth_1, system_proc_sys_reset_0_1_synth_1, system_v_axi4s_vid_out_0_0_synth_1, system_axi_vdma_0_0_synth_1, system_v_tpg_0_0_synth_1, system_axis_subset_converter_0_1_synth_1, system_axi_vdma_0_1_synth_1, system_ila_0_0_synth_1, system_proc_sys_reset_0_0_synth_1, system_v_tc_0_0_synth_1, system_rgb2dvi_0_1_synth_1, system_util_vector_logic_0_0_synth_1, system_ila_0_2_synth_1, system_ila_0_3_synth_1, system_util_vector_logic_0_1_synth_1...
+Run output will be captured here:
+system_processing_system7_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_processing_system7_0_0_synth_1/runme.log
+system_auto_pc_1_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_auto_pc_1_synth_1/runme.log
+system_xbar_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_xbar_0_synth_1/runme.log
+system_proc_sys_reset_0_2_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_0_2_synth_1/runme.log
+system_rst_ps7_0_100M_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_rst_ps7_0_100M_0_synth_1/runme.log
+system_auto_pc_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_auto_pc_0_synth_1/runme.log
+system_ila_0_1_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_1_synth_1/runme.log
+system_auto_cc_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_auto_cc_0_synth_1/runme.log
+system_proc_sys_reset_1_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_1_0_synth_1/runme.log
+system_axis_subset_converter_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axis_subset_converter_0_0_synth_1/runme.log
+system_proc_sys_reset_0_1_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_0_1_synth_1/runme.log
+system_v_axi4s_vid_out_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_v_axi4s_vid_out_0_0_synth_1/runme.log
+system_axi_vdma_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axi_vdma_0_0_synth_1/runme.log
+system_v_tpg_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_v_tpg_0_0_synth_1/runme.log
+system_axis_subset_converter_0_1_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axis_subset_converter_0_1_synth_1/runme.log
+system_axi_vdma_0_1_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axi_vdma_0_1_synth_1/runme.log
+system_ila_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_0_synth_1/runme.log
+system_proc_sys_reset_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_0_0_synth_1/runme.log
+system_v_tc_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_v_tc_0_0_synth_1/runme.log
+system_rgb2dvi_0_1_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_rgb2dvi_0_1_synth_1/runme.log
+system_util_vector_logic_0_0_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_util_vector_logic_0_0_synth_1/runme.log
+system_ila_0_2_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_2_synth_1/runme.log
+system_ila_0_3_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_3_synth_1/runme.log
+system_util_vector_logic_0_1_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_util_vector_logic_0_1_synth_1/runme.log
+[Sat Apr 27 11:49:14 2019] Launched synth_1...
+Run output will be captured here: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/synth_1/runme.log
+launch_runs: Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 2438.363 ; gain = 154.598
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7z010clg400-1
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.dcp' for cell 'system_i/PL_Switch'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axis_subset_converter_0_1/system_axis_subset_converter_0_1.dcp' for cell 'system_i/HDMI_OUT/axis_32to24_converter'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_axi4s_vid_out_0_0/system_v_axi4s_vid_out_0_0.dcp' for cell 'system_i/HDMI_OUT/hdmi_vid_out'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_2/system_ila_0_2.dcp' for cell 'system_i/HDMI_OUT/ila_video_out'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_3/system_ila_0_3.dcp' for cell 'system_i/HDMI_OUT/ila_video_out_stream'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rgb2dvi_0_1/system_rgb2dvi_0_1.dcp' for cell 'system_i/HDMI_OUT/rgb2dvi'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_util_vector_logic_0_1/system_util_vector_logic_0_1.dcp' for cell 'system_i/HDMI_OUT/util_vector_logic_and'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_util_vector_logic_0_0/system_util_vector_logic_0_0.dcp' for cell 'system_i/HDMI_OUT/util_vector_logic_not'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_tc_0_0/system_v_tc_0_0.dcp' for cell 'system_i/HDMI_OUT/v_tc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axis_subset_converter_0_0/system_axis_subset_converter_0_0.dcp' for cell 'system_i/TPG/axis_24to32_converter'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_tpg_0_0/system_v_tpg_0_0.dcp' for cell 'system_i/TPG/v_tpg'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.dcp' for cell 'system_i/Zynq_system/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0.dcp' for cell 'system_i/Zynq_system/rst_ps7_0_100M1'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_2/system_proc_sys_reset_0_2.dcp' for cell 'system_i/Zynq_system/rst_ps7_0_250M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0.dcp' for cell 'system_i/Zynq_system/rst_ps7_0_50M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.dcp' for cell 'system_i/Zynq_system/pix_clk/clk_150_200_150'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_0/system_proc_sys_reset_0_0.dcp' for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_150M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_1/system_proc_sys_reset_0_1.dcp' for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_200M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_1_0/system_proc_sys_reset_1_0.dcp' for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_250M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_xbar_0/system_xbar_0.dcp' for cell 'system_i/Zynq_system/ps7_0_axi_periph/xbar'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0.dcp' for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_2/system_auto_pc_2.dcp' for cell 'system_i/Zynq_system/ps7_0_axi_periph/s00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_0/system_axi_vdma_0_0.dcp' for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_1/system_ila_0_1.dcp' for cell 'system_i/vdma_in_s2mm/s2mm_ila'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0.dcp' for cell 'system_i/vdma_in_s2mm/axi_s2mm_interconnect/s00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_1/system_axi_vdma_0_1.dcp' for cell 'system_i/vdma_out_mm2s/axi_vdma_mm2s'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_0/system_ila_0_0.dcp' for cell 'system_i/vdma_out_mm2s/mm2s_ila'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_1/system_auto_pc_1.dcp' for cell 'system_i/vdma_out_mm2s/axi_mm2s_interconnect/s00_couplers/auto_pc'
+INFO: [Netlist 29-17] Analyzing 819 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. system_i/Zynq_system/pix_clk/clk_150_200_150/inst/clkin1_ibufg 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/Zynq_system/pix_clk/clk_150_200_150/clk_in1' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+INFO: [Chipscope 16-324] Core: system_i/HDMI_OUT/ila_video_out UUID: f8d57020-fed0-5de3-8ee1-a78486437f9f 
+INFO: [Chipscope 16-324] Core: system_i/HDMI_OUT/ila_video_out_stream UUID: 422bdc93-d7a8-5e6e-bb5c-74adfa4487ef 
+INFO: [Chipscope 16-324] Core: system_i/vdma_in_s2mm/s2mm_ila UUID: 5dc4cc3a-4e01-5918-922a-e2004a959cad 
+INFO: [Chipscope 16-324] Core: system_i/vdma_out_mm2s/mm2s_ila UUID: 60cad1ba-2881-5d93-abb9-184415267f03 
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc] for cell 'system_i/Zynq_system/processing_system7_0/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc] for cell 'system_i/Zynq_system/processing_system7_0/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc] for cell 'system_i/PL_Switch/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc] for cell 'system_i/PL_Switch/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc] for cell 'system_i/PL_Switch/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc] for cell 'system_i/PL_Switch/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0_board.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0_board.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_50M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_50M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_board.xdc] for cell 'system_i/Zynq_system/pix_clk/clk_150_200_150/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_board.xdc] for cell 'system_i/Zynq_system/pix_clk/clk_150_200_150/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc] for cell 'system_i/Zynq_system/pix_clk/clk_150_200_150/inst'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc:57]
+INFO: [Timing 38-2] Deriving generated clocks [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc:57]
+get_clocks: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 3313.832 ; gain = 565.711
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc] for cell 'system_i/Zynq_system/pix_clk/clk_150_200_150/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_0/system_axi_vdma_0_0.xdc] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_0/system_axi_vdma_0_0.xdc] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_1/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/vdma_in_s2mm/s2mm_ila/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_1/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/vdma_in_s2mm/s2mm_ila/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_1/ila_v6_2/constraints/ila.xdc] for cell 'system_i/vdma_in_s2mm/s2mm_ila/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_1/ila_v6_2/constraints/ila.xdc] for cell 'system_i/vdma_in_s2mm/s2mm_ila/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_1/system_axi_vdma_0_1.xdc] for cell 'system_i/vdma_out_mm2s/axi_vdma_mm2s/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_1/system_axi_vdma_0_1.xdc] for cell 'system_i/vdma_out_mm2s/axi_vdma_mm2s/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_0/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/vdma_out_mm2s/mm2s_ila/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_0/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/vdma_out_mm2s/mm2s_ila/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_0/ila_v6_2/constraints/ila.xdc] for cell 'system_i/vdma_out_mm2s/mm2s_ila/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_0/ila_v6_2/constraints/ila.xdc] for cell 'system_i/vdma_out_mm2s/mm2s_ila/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_2/system_proc_sys_reset_0_2_board.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_250M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_2/system_proc_sys_reset_0_2_board.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_250M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_2/system_proc_sys_reset_0_2.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_250M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_2/system_proc_sys_reset_0_2.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_250M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_board.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_100M1/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_board.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_100M1/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_100M1/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0.xdc] for cell 'system_i/Zynq_system/rst_ps7_0_100M1/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_1/system_proc_sys_reset_0_1_board.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_200M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_1/system_proc_sys_reset_0_1_board.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_200M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_1/system_proc_sys_reset_0_1.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_200M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_1/system_proc_sys_reset_0_1.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_200M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_0/system_proc_sys_reset_0_0_board.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_150M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_0/system_proc_sys_reset_0_0_board.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_150M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_0/system_proc_sys_reset_0_0.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_150M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0_0/system_proc_sys_reset_0_0.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_150M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_1_0/system_proc_sys_reset_1_0_board.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_250M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_1_0/system_proc_sys_reset_1_0_board.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_250M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_1_0/system_proc_sys_reset_1_0.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_250M/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_proc_sys_reset_1_0/system_proc_sys_reset_1_0.xdc] for cell 'system_i/Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_250M/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rgb2dvi_0_1/src/rgb2dvi.xdc] for cell 'system_i/HDMI_OUT/rgb2dvi/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rgb2dvi_0_1/src/rgb2dvi.xdc] for cell 'system_i/HDMI_OUT/rgb2dvi/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_2/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/HDMI_OUT/ila_video_out/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_2/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/HDMI_OUT/ila_video_out/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_2/ila_v6_2/constraints/ila.xdc] for cell 'system_i/HDMI_OUT/ila_video_out/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_2/ila_v6_2/constraints/ila.xdc] for cell 'system_i/HDMI_OUT/ila_video_out/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_3/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/HDMI_OUT/ila_video_out_stream/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_3/ila_v6_2/constraints/ila_impl.xdc] for cell 'system_i/HDMI_OUT/ila_video_out_stream/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_3/ila_v6_2/constraints/ila.xdc] for cell 'system_i/HDMI_OUT/ila_video_out_stream/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_3/ila_v6_2/constraints/ila.xdc] for cell 'system_i/HDMI_OUT/ila_video_out_stream/inst'
+Parsing XDC File [C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/constrs_1/new/system.xdc]
+Finished Parsing XDC File [C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/constrs_1/new/system.xdc]
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_0/system_axi_vdma_0_0_clocks.xdc] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_0/system_axi_vdma_0_0_clocks.xdc] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_1/system_axi_vdma_0_1_clocks.xdc] for cell 'system_i/vdma_out_mm2s/axi_vdma_mm2s/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_axi_vdma_0_1/system_axi_vdma_0_1_clocks.xdc] for cell 'system_i/vdma_out_mm2s/axi_vdma_mm2s/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_clocks.xdc] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_clocks.xdc] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_tpg_0_0/system_v_tpg_0_0.xdc] for cell 'system_i/TPG/v_tpg/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_tpg_0_0/system_v_tpg_0_0.xdc] for cell 'system_i/TPG/v_tpg/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_axi4s_vid_out_0_0/system_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_axi4s_vid_out_0_0/system_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_tc_0_0/system_v_tc_0_0_clocks.xdc] for cell 'system_i/HDMI_OUT/v_tc/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_v_tc_0_0/system_v_tc_0_0_clocks.xdc] for cell 'system_i/HDMI_OUT/v_tc/U0'
+Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rgb2dvi_0_1/src/rgb2dvi_clocks.xdc] for cell 'system_i/HDMI_OUT/rgb2dvi/U0'
+Finished Parsing XDC File [c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_rgb2dvi_0_1/src/rgb2dvi_clocks.xdc] for cell 'system_i/HDMI_OUT/rgb2dvi/U0'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_s2mm_interconnect/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_s2mm_interconnect/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_s2mm_interconnect/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_s2mm_interconnect/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'system_i/vdma_out_mm2s/axi_mm2s_interconnect/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'system_i/vdma_out_mm2s/axi_mm2s_interconnect/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_w/handshake'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_w/handshake'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/handshake'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/handshake'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake/xpm_cdc_single_dest2src_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake/xpm_cdc_single_dest2src_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake/xpm_cdc_single_src2dest_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake/xpm_cdc_single_src2dest_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake/xpm_cdc_single_dest2src_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake/xpm_cdc_single_dest2src_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake/xpm_cdc_single_src2dest_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake/xpm_cdc_single_src2dest_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake/xpm_cdc_single_dest2src_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake/xpm_cdc_single_dest2src_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_w/handshake/xpm_cdc_single_src2dest_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_w/handshake/xpm_cdc_single_src2dest_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_w/handshake/xpm_cdc_single_dest2src_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_w/handshake/xpm_cdc_single_dest2src_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/handshake/xpm_cdc_single_src2dest_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/handshake/xpm_cdc_single_src2dest_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/handshake/xpm_cdc_single_dest2src_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/handshake/xpm_cdc_single_dest2src_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake/xpm_cdc_single_src2dest_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake/xpm_cdc_single_src2dest_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst/CDC_SINGLE_LOCKED_INST/xpm_cdc_single_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst/CDC_SINGLE_LOCKED_INST/xpm_cdc_single_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/vdma_in_s2mm/axi_vdma_s2mm/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/vdma_out_mm2s/axi_vdma_mm2s/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/vdma_out_mm2s/axi_vdma_mm2s/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst/COUPLER_INST/generate_sync_fifo.FIFO_INST/XPM_FIFO_SYNC_INST'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'system_i/HDMI_OUT/hdmi_vid_out/inst/COUPLER_INST/generate_sync_fifo.FIFO_INST/XPM_FIFO_SYNC_INST'
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 42 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 3321.426 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 237 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRLC32E, SRL16E): 232 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 4 instances
+  RAM32X1D => RAM32X1D (RAMD32, RAMD32): 1 instances
+
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+WARNING: [Designutils 20-3303] unexpected site type 'IOPAD' in HDPYFinalizeIO
+INFO: [Common 17-14] Message 'Designutils 20-3303' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+open_run: Time (s): cpu = 00:00:52 ; elapsed = 00:00:52 . Memory (MB): peak = 3321.426 ; gain = 837.973
+place_ports {TMDS_data_p[0]} D19
+place_ports {TMDS_data_p[1]} C20
+place_ports {TMDS_data_p[2]} B19
+place_ports TMDS_clk_p H16
+save_constraints
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 3328.898 ; gain = 0.000
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 3328.898 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.480 . Memory (MB): peak = 3335.910 ; gain = 6.059
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 3335.910 ; gain = 0.000
+[Sat Apr 27 12:23:33 2019] Launched impl_1...
+Run output will be captured here: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 3337.184 ; gain = 8.285
+close_design
+file copy -force C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.sysdef C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk/system_wrapper.hdf
+
+launch_sdk -workspace C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk -hwspec C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk/system_wrapper.hdf
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -workspace C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk -hwspec C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk/system_wrapper.hdf
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+open_hw_target: Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 4022.828 ; gain = 684.379
+set_property PROGRAM.FILE {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.bit} [get_hw_devices xc7z010_1]
+set_property PROBES.FILE {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.ltx} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.ltx} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+INFO: [Labtools 27-2302] Device xc7z010 (JTAG device index = 1) is programmed with a design that has 4 ILA core(s).
+refresh_hw_device: Time (s): cpu = 00:00:19 ; elapsed = 00:00:15 . Memory (MB): peak = 4049.066 ; gain = 22.469
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_3 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_4 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]
+ERROR: [Labtools 27-3428] Ila core [hw_ila_1] clock has stopped. Unable to arm ILA core.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}] -trigger_now
+ERROR: [Labtools 27-3428] Ila core [hw_ila_1] clock has stopped. Unable to arm ILA core.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:16:09
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:16:09
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:16:14
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:16:14
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:16:27
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:16:27
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_3' trigger was armed at 2019-Apr-27 13:16:32
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_3' triggered at 2019-Apr-27 13:16:32
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_3.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_3' trigger was armed at 2019-Apr-27 13:16:34
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_3' triggered at 2019-Apr-27 13:16:34
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_3.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_4' trigger was armed at 2019-Apr-27 13:16:37
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_4' triggered at 2019-Apr-27 13:16:37
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_4.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_4' trigger was armed at 2019-Apr-27 13:16:41
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_4' triggered at 2019-Apr-27 13:16:41
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_4.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_4' trigger was armed at 2019-Apr-27 13:16:44
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_4' triggered at 2019-Apr-27 13:16:44
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_4.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_3' trigger was armed at 2019-Apr-27 13:16:48
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_3' triggered at 2019-Apr-27 13:16:48
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_3.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_3' trigger was armed at 2019-Apr-27 13:16:52
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_3' triggered at 2019-Apr-27 13:16:52
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_3.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:16:58
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:16:58
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}] -trigger_now
+ERROR: [Labtools 27-3428] Ila core [hw_ila_1] clock has stopped. Unable to arm ILA core.
+open_bd_design {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd}
+disconnect_bd_net /HDMI_OUT/util_vector_logic_not_Res [get_bd_pins HDMI_OUT/ila_video_out/clk]
+connect_bd_net [get_bd_pins HDMI_OUT/pix_clk] [get_bd_pins HDMI_OUT/ila_video_out/clk]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property TRIGGER_COMPARE_VALUE neq24'hXX_XXXX [get_hw_probes system_i/HDMI_OUT/axis_32to24_converter_M_AXIS_TDATA -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+set_property TRIGGER_COMPARE_VALUE neq24'h00_0000 [get_hw_probes system_i/HDMI_OUT/axis_32to24_converter_M_AXIS_TDATA -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:18:01
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_2' trigger was stopped by user at 2019-Apr-27 13:18:10
+WARNING: [Labtools 27-157] hw_ila [hw_ila_2] stopped. No data to upload.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:18:51
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:18:51
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:18:53
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:18:53
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1435] Device xc7z010 (JTAG device index = 1) is not programmed (DONE status = 0).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+INFO: [Labtools 27-2302] Device xc7z010 (JTAG device index = 1) is programmed with a design that has 4 ILA core(s).
+refresh_hw_device: Time (s): cpu = 00:00:14 ; elapsed = 00:00:12 . Memory (MB): peak = 4570.273 ; gain = 0.000
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_3 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_4 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:23:17
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:23:17
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:23:21
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:23:21
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:23:24
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_2' trigger was stopped by user at 2019-Apr-27 13:23:29
+WARNING: [Labtools 27-157] hw_ila [hw_ila_2] stopped. No data to upload.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:23:30
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:23:30
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+open_bd_design {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd}
+startgroup
+set_property -dict [list CONFIG.C_S_AXIS_VIDEO_FORMAT.VALUE_SRC PROPAGATED] [get_bd_cells HDMI_OUT/hdmi_vid_out]
+set_property -dict [list CONFIG.C_VTG_MASTER_SLAVE {0}] [get_bd_cells HDMI_OUT/hdmi_vid_out]
+endgroup
+startgroup
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 TPG/ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /TPG/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+endgroup
+set_property name ila_tpg [get_bd_cells TPG/ila_0]
+connect_bd_net [get_bd_pins TPG/pix_clk] [get_bd_pins TPG/ila_tpg/clk]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+startgroup
+set_property -dict [list CONFIG.C_DATA_DEPTH {8192} CONFIG.C_NUM_OF_PROBES {9} CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S}] [get_bd_cells TPG/ila_tpg]
+endgroup
+connect_bd_intf_net [get_bd_intf_pins TPG/ila_tpg/SLOT_0_AXIS] [get_bd_intf_pins TPG/axis_24to32_converter/M_AXIS]
+regenerate_bd_layout -hierarchy [get_bd_cells TPG]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 vdma_out_mm2s/ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /vdma_out_mm2s/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+endgroup
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.C_DATA_DEPTH {8192} CONFIG.C_NUM_OF_PROBES {9} CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S}] [get_bd_cells vdma_out_mm2s/ila_0]
+connect_bd_net [get_bd_pins vdma_out_mm2s/pix_clk] [get_bd_pins vdma_out_mm2s/ila_0/clk]
+connect_bd_intf_net [get_bd_intf_pins vdma_out_mm2s/ila_0/SLOT_0_AXIS] [get_bd_intf_pins vdma_out_mm2s/axi_vdma_mm2s/M_AXIS_MM2S]
+set_property name mm2s_axis_ila [get_bd_cells vdma_out_mm2s/ila_0]
+validate_bd_design
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /Zynq_system/processing_system7_0/IRQ_F2P
+INFO: [xilinx.com:ip:axi_vdma:6.3-16] /vdma_out_mm2s/axi_vdma_mm2s 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+INFO: [xilinx.com:ip:axi_vdma:6.3-17] /vdma_in_s2mm/axi_vdma_s2mm 
+                    All clocks connected to AXI VDMA are not identical, therefore configuring AXI-VDMA in ASYNC mode.
+WARNING: [BD 41-927] Following properties on pin /HDMI_OUT/rgb2dvi/PixelClk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=/Zynq_system/pix_clk/clk_150_200_150_clk_out1 
+validate_bd_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 5078.191 ; gain = 0.000
+reset_target all [get_files  C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd]
+reset_target: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 5079.582 ; gain = 1.391
+export_ip_user_files -of_objects  [get_files  C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd] -sync -no_script -force -quiet
+delete_ip_run [get_files -of_objects [get_fileset sources_1] C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd]
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_processing_system7_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axi_vdma_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_1_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axi_vdma_0_1_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_xbar_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_0_2_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_rst_ps7_0_100M_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_0_1_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_proc_sys_reset_1_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axis_subset_converter_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_v_tpg_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_axis_subset_converter_0_1_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_v_axi4s_vid_out_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_v_tc_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_rgb2dvi_0_1_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_util_vector_logic_0_0_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_util_vector_logic_0_1_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_2_synth_1
+
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_3_synth_1
+
+delete_ip_run: Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 5079.582 ; gain = 0.000
+save_bd_design
+Wrote  : <C:\Xilinx\workspace\2018.3\zybo_GrabberBoard\system\system.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_81a69a20.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4c32cfbd.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_bde374fc.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4d7a76b6.ui> 
+close_bd_design [get_bd_designs system]
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/hw_1/wave/hw_ila_data_2/hw_ila_data_2.wcfg}
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/hw_1/wave/hw_ila_data_3/hw_ila_data_3.wcfg}
+save_wave_config {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/hw_1/wave/hw_ila_data_4/hw_ila_data_4.wcfg}
+close_hw
+open_bd_design {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd}
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - PL_Switch
+Adding cell -- xilinx.com:ip:axi_vdma:6.3 - axi_vdma_s2mm
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - axi_s2mm_interconnect
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding cell -- xilinx.com:ip:ila:6.2 - s2mm_ila
+INFO: [xilinx.com:ip:ila:6.2-6] /vdma_in_s2mm/s2mm_ila: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+WARNING: [BD 41-1731] Type mismatch between connected pins: /vdma_in_s2mm/axi_vdma_s2mm/s2mm_introut(intr) and /vdma_in_s2mm/s2mm_ila/probe0(undef)
+Adding cell -- xilinx.com:ip:axi_vdma:6.3 - axi_vdma_mm2s
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - axi_mm2s_interconnect
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding cell -- xilinx.com:ip:ila:6.2 - mm2s_ila
+INFO: [xilinx.com:ip:ila:6.2-6] /vdma_out_mm2s/mm2s_ila: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Adding cell -- xilinx.com:ip:ila:6.2 - mm2s_axis_ila
+INFO: [xilinx.com:ip:ila:6.2-6] /vdma_out_mm2s/mm2s_axis_ila: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+WARNING: [BD 41-1731] Type mismatch between connected pins: /vdma_out_mm2s/axi_vdma_mm2s/mm2s_introut(intr) and /vdma_out_mm2s/mm2s_ila/probe0(undef)
+WARNING: [BD 41-1731] Type mismatch between connected pins: /vdma_out_mm2s/mm2s_frame_ptr_in(intr) and /vdma_out_mm2s/axi_vdma_mm2s/mm2s_frame_ptr_in(undef)
+Adding cell -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - PL2PS_IRQ
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_50M
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_250M
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_100M1
+Adding cell -- xilinx.com:ip:clk_wiz:6.0 - clk_150_200_150
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_200M
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_150M
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_250M
+Adding cell -- xilinx.com:ip:axis_subset_converter:1.1 - axis_24to32_converter
+Adding cell -- xilinx.com:ip:v_tpg:8.0 - v_tpg
+Adding cell -- xilinx.com:ip:ila:6.2 - ila_tpg
+INFO: [xilinx.com:ip:ila:6.2-6] /TPG/ila_tpg: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Adding cell -- xilinx.com:ip:axis_subset_converter:1.1 - axis_32to24_converter
+Adding cell -- xilinx.com:ip:v_axi4s_vid_out:4.0 - hdmi_vid_out
+Adding cell -- xilinx.com:ip:v_tc:6.1 - v_tc
+Adding cell -- digilentinc.com:ip:rgb2dvi:1.4 - rgb2dvi
+Adding cell -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_not
+Adding cell -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_and
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - hdmi_high
+Adding cell -- xilinx.com:ip:ila:6.2 - ila_video_out
+INFO: [xilinx.com:ip:ila:6.2-6] /HDMI_OUT/ila_video_out: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Adding cell -- xilinx.com:ip:ila:6.2 - ila_video_out_stream
+INFO: [xilinx.com:ip:ila:6.2-6] /HDMI_OUT/ila_video_out_stream: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Successfully read diagram <system> from BD file <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd>
+make_wrapper -files [get_files C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd] -top
+INFO: [BD 41-1662] The design 'system.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hdl/system_wrapper.v
+open_bd_design {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/system.bd}
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+INFO: [BD 41-1662] The design 'system.bd' is already validated. Therefore parameter propagation will not be re-run.
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PL_Switch .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/PL2PS_IRQ .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/rst_ps7_0_50M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/clk_150_200_150 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_in_s2mm/axi_vdma_s2mm .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_1/system_ila_0_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_in_s2mm/s2mm_ila .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_out_mm2s/axi_vdma_mm2s .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_0/system_ila_0_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_out_mm2s/mm2s_ila .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/ps7_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/rst_ps7_0_250M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/rst_ps7_0_100M1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_200M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_150M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/pix_clk/pix_clk_reset/proc_sys_reset_250M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block TPG/axis_24to32_converter .
+WARNING: [IP_Flow 19-1971] File named "sim/system_v_tpg_0_0.v" already exists in file group "xilinx_verilogsimulationwrapper", cannot add it again.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block TPG/v_tpg .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/axis_32to24_converter .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/hdmi_vid_out .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/v_tc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/rgb2dvi .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/util_vector_logic_not .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/util_vector_logic_and .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/hdmi_high .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_2/system_ila_0_2_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/ila_video_out .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_3/system_ila_0_3_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block HDMI_OUT/ila_video_out_stream .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_in_s2mm/axi_s2mm_interconnect/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_1/system_auto_pc_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_out_mm2s/axi_mm2s_interconnect/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_5/system_ila_0_5_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vdma_out_mm2s/mm2s_axis_ila .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_pc_2/system_auto_pc_2_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/ps7_0_axi_periph/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block Zynq_system/ps7_0_axi_periph/m03_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ip/system_ila_0_4/system_ila_0_4_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block TPG/ila_tpg .
+Exporting to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_cc_0, cache-ID = 23d488be3d5244b6; cache size = 43.368 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_ila_0_0, cache-ID = e94af2b5dd94a46b; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = 072628958505f912; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_proc_sys_reset_0_2, cache-ID = b5ac5a2285c7ec2a; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_util_vector_logic_0_0, cache-ID = 46312a13c8c56114; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_1, cache-ID = 4c0f7c035e207373; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_ila_0_3, cache-ID = 5c4566cd9e953e2b; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_2, cache-ID = cc42f6d4ec47da59; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_rgb2dvi_0_1, cache-ID = 9d1815a178750293; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_v_tc_0_0, cache-ID = 71d37e7870980981; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_axi_gpio_0_0, cache-ID = 4890b61829921168; cache size = 43.368 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_ila_0_1, cache-ID = e94af2b5dd94a46b; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_axi_vdma_0_0, cache-ID = fab7143ca42e75d8; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_proc_sys_reset_1_0, cache-ID = 4b335640d38ca1b8; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_v_axi4s_vid_out_0_0, cache-ID = a88d696ca1849230; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_axi_vdma_0_1, cache-ID = 8899bf67903cc394; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_proc_sys_reset_0_0, cache-ID = dbb921617d89ab07; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_rst_ps7_0_50M_0, cache-ID = a20c51071e271b34; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_axis_subset_converter_0_0, cache-ID = bc6bf4b6004ace15; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_proc_sys_reset_0_1, cache-ID = af6fdfd8e3108ed2; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_util_vector_logic_0_1, cache-ID = b538012ba8700250; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_axis_subset_converter_0_1, cache-ID = cfa3b2c58d4cf8b6; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_rst_ps7_0_100M_0, cache-ID = c17aa49b1b5ec9ff; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_v_tpg_0_0, cache-ID = 9bdc3c3313ba6d01; cache size = 43.370 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_clk_wiz_0_0, cache-ID = 167c2a08cad88ec0; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_processing_system7_0_0, cache-ID = 85ba4581ae562b13; cache size = 43.369 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_xbar_0, cache-ID = 4bc1e4fe8e424890; cache size = 43.369 MB.
+config_ip_cache: Time (s): cpu = 00:00:36 ; elapsed = 00:00:33 . Memory (MB): peak = 5081.527 ; gain = 0.000
+[Sat Apr 27 13:30:51 2019] Launched system_ila_0_2_synth_1, system_ila_0_5_synth_1, system_ila_0_4_synth_1, synth_1...
+Run output will be captured here:
+system_ila_0_2_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_2_synth_1/runme.log
+system_ila_0_5_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_5_synth_1/runme.log
+system_ila_0_4_synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/system_ila_0_4_synth_1/runme.log
+synth_1: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/synth_1/runme.log
+[Sat Apr 27 13:30:51 2019] Launched impl_1...
+Run output will be captured here: C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:01:23 ; elapsed = 00:01:35 . Memory (MB): peak = 5081.527 ; gain = 0.000
+file copy -force C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.sysdef C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk/system_wrapper.hdf
+
+launch_sdk -workspace C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk -hwspec C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk/system_wrapper.hdf
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -workspace C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk -hwspec C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.sdk/system_wrapper.hdf
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+set_property PROGRAM.FILE {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.bit} [get_hw_devices xc7z010_1]
+set_property PROBES.FILE {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.ltx} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.runs/impl_1/system_wrapper.ltx} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+INFO: [Labtools 27-2302] Device xc7z010 (JTAG device index = 1) is programmed with a design that has 6 ILA core(s).
+refresh_hw_device: Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 5081.527 ; gain = 0.000
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_3 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/TPG/ila_tpg"}]]
+WARNING: Simulation object system_i/vdma_in_s2mm/axi_vdma_s2mm_s2mm_introut was not found in the design.
+WARNING: Simulation object system_i/vdma_in_s2mm/axi_vdma_s2mm_s2mm_frame_ptr_out was not found in the design.
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_4 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+WARNING: Simulation object system_i/vdma_out_mm2s/axi_vdma_mm2s_mm2s_introut was not found in the design.
+WARNING: Simulation object system_i/vdma_out_mm2s/axi_vdma_mm2s_mm2s_frame_ptr_out was not found in the design.
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_5 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_6 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_6' trigger was armed at 2019-Apr-27 13:56:07
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_6' triggered at 2019-Apr-27 13:56:07
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_6.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_5' trigger was armed at 2019-Apr-27 13:56:32
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_5' triggered at 2019-Apr-27 13:56:32
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_5.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_5' trigger was armed at 2019-Apr-27 13:56:35
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_5' triggered at 2019-Apr-27 13:56:35
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_5.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_5' trigger was armed at 2019-Apr-27 13:56:40
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_out_mm2s/mm2s_axis_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_5' triggered at 2019-Apr-27 13:56:40
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_5.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+add_wave -into {hw_ila_data_4.wcfg} -radix hex { {system_i/vdma_in_s2mm/axi_vdma_s2mm_s2mm_frame_ptr_out} {system_i/vdma_in_s2mm/axi_vdma_s2mm_s2mm_introut} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_4' trigger was armed at 2019-Apr-27 13:56:51
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/vdma_in_s2mm/s2mm_ila"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_4' triggered at 2019-Apr-27 13:56:51
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_4.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+add_wave -into {hw_ila_data_3.wcfg} -radix hex { {system_i/TPG/Conn1_TDATA} {system_i/TPG/Conn1_TDEST} {system_i/TPG/Conn1_TID} {system_i/TPG/Conn1_TKEEP} {system_i/TPG/Conn1_TLAST} {system_i/TPG/Conn1_TREADY} {system_i/TPG/Conn1_TSTRB} {system_i/TPG/Conn1_TUSER} {system_i/TPG/Conn1_TVALID} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/TPG/ila_tpg"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_3' trigger was armed at 2019-Apr-27 13:57:05
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/TPG/ila_tpg"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/TPG/ila_tpg"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_3' triggered at 2019-Apr-27 13:57:05
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_3.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/TPG/ila_tpg"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_3' trigger was armed at 2019-Apr-27 13:57:13
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/TPG/ila_tpg"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/TPG/ila_tpg"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_3' triggered at 2019-Apr-27 13:57:13
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_3.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2019-Apr-27 13:57:20
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out_stream"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2019-Apr-27 13:57:20
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_2.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}] -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2019-Apr-27 13:57:24
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z010_1] -filter {CELL_NAME=~"system_i/HDMI_OUT/ila_video_out"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2019-Apr-27 13:57:24
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1435] Device xc7z010 (JTAG device index = 1) is not programmed (DONE status = 0).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351AB763BA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1435] Device xc7z010 (JTAG device index = 1) is not programmed (DONE status = 0).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+close_hw
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:v_osd:6.0 HDMI_OUT/v_osd_0
+endgroup
+delete_bd_objs [get_bd_cells HDMI_OUT/v_osd_0]
+startgroup
+create_bd_cell -type ip -vlnv digilentinc.com:ip:dvi2rgb:1.9 dvi2rgb_0
+endgroup
+set_property -dict [list CONFIG.kClkRange {1} CONFIG.kEdidFileName {dgl_1080p_cea.data}] [get_bd_cells dvi2rgb_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:v_frmbuf_rd:2.1 v_frmbuf_rd_0
+endgroup
+delete_bd_objs [get_bd_cells v_frmbuf_rd_0]
+delete_bd_objs [get_bd_cells dvi2rgb_0]
+regenerate_bd_layout
+save_bd_design
+Wrote  : <C:\Xilinx\workspace\2018.3\zybo_GrabberBoard\system\system.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+Wrote  : <C:/Xilinx/workspace/2018.3/zybo_GrabberBoard/system/system.srcs/sources_1/bd/system/ui/bd_4d7a76b6.ui> 
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Apr 27 14:22:04 2019...

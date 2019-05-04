@@ -1,0 +1,50 @@
+
+*** Running vivado
+    with args -log rs170_buffer_bridge.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source rs170_buffer_bridge.tcl
+
+
+****** Vivado v2016.4 (64-bit)
+  **** SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+  **** IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source rs170_buffer_bridge.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 342.410 ; gain = 132.844
+INFO: [Synth 8-638] synthesizing module 'rs170_buffer_bridge' [e:/P_2017/SEEDCORE/SIM/rs170_out_ctrl/project_1/project_1.srcs/sources_1/ip/rs170_buffer_bridge/synth/rs170_buffer_bridge.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'rs170_buffer_bridge' (24#1) [e:/P_2017/SEEDCORE/SIM/rs170_out_ctrl/project_1/project_1.srcs/sources_1/ip/rs170_buffer_bridge/synth/rs170_buffer_bridge.vhd:72]
+Finished RTL Elaboration : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 553.871 ; gain = 344.305
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 553.871 ; gain = 344.305
+INFO: [Device 21-403] Loading part xc7z030ffg676-2
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 679.609 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:45 ; elapsed = 00:00:51 . Memory (MB): peak = 679.609 ; gain = 470.043
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:45 ; elapsed = 00:00:51 . Memory (MB): peak = 679.609 ; gain = 470.043
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:51 . Memory (MB): peak = 679.609 ; gain = 470.043
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:45 ; elapsed = 00:00:51 . Memory (MB): peak = 679.609 ; gain = 470.043
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:52 . Memory (MB): peak = 679.609 ; gain = 470.043
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:00:58 . Memory (MB): peak = 679.609 ; gain = 470.043
+Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:58 . Memory (MB): peak = 682.926 ; gain = 473.359
+Finished Technology Mapping : Time (s): cpu = 00:00:52 ; elapsed = 00:00:58 . Memory (MB): peak = 692.461 ; gain = 482.895
+Finished IO Insertion : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 692.461 ; gain = 482.895
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 692.461 ; gain = 482.895
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 692.461 ; gain = 482.895
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 692.461 ; gain = 482.895
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 692.461 ; gain = 482.895
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 692.461 ; gain = 482.895
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |LUT1     |     4|
+|2     |LUT2     |     6|
+|3     |LUT3     |     5|
+|4     |LUT4     |    24|
+|5     |LUT5     |     4|
+|6     |LUT6     |     6|
+|7     |MUXCY    |    20|
+|8     |RAMB18E1 |     1|
+|9     |FDRE     |    40|
+|10    |FDSE     |     4|
++------+---------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 692.461 ; gain = 482.895
+synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:54 . Memory (MB): peak = 709.250 ; gain = 447.113

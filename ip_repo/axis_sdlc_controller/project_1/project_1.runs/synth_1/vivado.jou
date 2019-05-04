@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Mon Mar 27 22:02:58 2017
+# Process ID: 8828
+# Current directory: E:/P_2017/SEEDCORE/RTL/V16_3/mcb_axis_sdlc_170327/ip_repo/axis_sdlc_controller/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log AXIS_SDLC.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AXIS_SDLC.tcl
+# Log file: E:/P_2017/SEEDCORE/RTL/V16_3/mcb_axis_sdlc_170327/ip_repo/axis_sdlc_controller/project_1/project_1.runs/synth_1/AXIS_SDLC.vds
+# Journal file: E:/P_2017/SEEDCORE/RTL/V16_3/mcb_axis_sdlc_170327/ip_repo/axis_sdlc_controller/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source AXIS_SDLC.tcl -notrace

@@ -1,0 +1,464 @@
+
+*** Running vivado
+    with args -log axis_s2_m1_sw.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source axis_s2_m1_sw.tcl
+
+
+****** Vivado v2016.4 (64-bit)
+  **** SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+  **** IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source axis_s2_m1_sw.tcl -notrace
+Command: synth_design -top axis_s2_m1_sw -part xc7z045ffg900-3
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z045'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z045'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 3812 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 336.016 ; gain = 126.141
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'axis_s2_m1_sw' [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/axis_s2_m1_sw.v:23]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'axis_s2_m1_sw_ngc' [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/axis_s2_m1_sw_ngc.v:23]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'axis_s2_m1_sw_ngc' (1#1) [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/axis_s2_m1_sw_ngc.v:23]
+INFO: [Synth 8-256] done synthesizing module 'axis_s2_m1_sw' (2#1) [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/axis_s2_m1_sw.v:23]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 367.383 ; gain = 157.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 367.383 ; gain = 157.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z045ffg900-3
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 367.383 ; gain = 157.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 367.383 ; gain = 157.508
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+INFO: [Device 21-403] Loading part xc7z045ffg900-3
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 900 (col length:140)
+BRAMs: 1090 (col length: RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 557.762 ; gain = 347.887
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 557.762 ; gain = 347.887
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+------------------+----------+
+|      |BlackBox name     |Instances |
++------+------------------+----------+
+|1     |axis_s2_m1_sw_ngc |         1|
++------+------------------+----------+
+
+Report Cell Usage: 
++------+------------------+------+
+|      |Cell              |Count |
++------+------------------+------+
+|1     |axis_s2_m1_sw_ngc |     1|
+|2     |IBUF              |    82|
+|3     |OBUF              |    41|
++------+------------------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |   164|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 564.238 ; gain = 280.164
+Synthesis Optimization Complete : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 564.238 ; gain = 354.363
+INFO: [Project 1-571] Translating synthesized netlist
+Parsing EDIF File [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/axis_s2_m1_sw_ngc.edn]
+Finished Parsing EDIF File [E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/axis_s2_m1_sw_ngc.edn]
+INFO: [Netlist 29-17] Analyzing 162 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.4
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/axis_tdest_sel_IBUF_inst, from the path connected to top-level port: axis_tdest_sel 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/m_axis_tready_IBUF_inst, from the path connected to top-level port: m_axis_tready 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[0]_inst, from the path connected to top-level port: s0_axis_tdata[0] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[10]_inst, from the path connected to top-level port: s0_axis_tdata[10] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[11]_inst, from the path connected to top-level port: s0_axis_tdata[11] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[12]_inst, from the path connected to top-level port: s0_axis_tdata[12] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[13]_inst, from the path connected to top-level port: s0_axis_tdata[13] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[14]_inst, from the path connected to top-level port: s0_axis_tdata[14] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[15]_inst, from the path connected to top-level port: s0_axis_tdata[15] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[16]_inst, from the path connected to top-level port: s0_axis_tdata[16] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[17]_inst, from the path connected to top-level port: s0_axis_tdata[17] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[18]_inst, from the path connected to top-level port: s0_axis_tdata[18] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[19]_inst, from the path connected to top-level port: s0_axis_tdata[19] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[1]_inst, from the path connected to top-level port: s0_axis_tdata[1] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[20]_inst, from the path connected to top-level port: s0_axis_tdata[20] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[21]_inst, from the path connected to top-level port: s0_axis_tdata[21] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[22]_inst, from the path connected to top-level port: s0_axis_tdata[22] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[23]_inst, from the path connected to top-level port: s0_axis_tdata[23] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[24]_inst, from the path connected to top-level port: s0_axis_tdata[24] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[25]_inst, from the path connected to top-level port: s0_axis_tdata[25] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[26]_inst, from the path connected to top-level port: s0_axis_tdata[26] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[27]_inst, from the path connected to top-level port: s0_axis_tdata[27] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[28]_inst, from the path connected to top-level port: s0_axis_tdata[28] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[29]_inst, from the path connected to top-level port: s0_axis_tdata[29] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[2]_inst, from the path connected to top-level port: s0_axis_tdata[2] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[30]_inst, from the path connected to top-level port: s0_axis_tdata[30] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[31]_inst, from the path connected to top-level port: s0_axis_tdata[31] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[3]_inst, from the path connected to top-level port: s0_axis_tdata[3] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[4]_inst, from the path connected to top-level port: s0_axis_tdata[4] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[5]_inst, from the path connected to top-level port: s0_axis_tdata[5] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[6]_inst, from the path connected to top-level port: s0_axis_tdata[6] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[7]_inst, from the path connected to top-level port: s0_axis_tdata[7] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[8]_inst, from the path connected to top-level port: s0_axis_tdata[8] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tdata_IBUF[9]_inst, from the path connected to top-level port: s0_axis_tdata[9] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tkeep_IBUF[0]_inst, from the path connected to top-level port: s0_axis_tkeep[0] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tkeep_IBUF[1]_inst, from the path connected to top-level port: s0_axis_tkeep[1] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tkeep_IBUF[2]_inst, from the path connected to top-level port: s0_axis_tkeep[2] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tkeep_IBUF[3]_inst, from the path connected to top-level port: s0_axis_tkeep[3] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tlast_IBUF_inst, from the path connected to top-level port: s0_axis_tlast 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tuser_IBUF_inst, from the path connected to top-level port: s0_axis_tuser 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s0_axis_tvalid_IBUF_inst, from the path connected to top-level port: s0_axis_tvalid 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[0]_inst, from the path connected to top-level port: s1_axis_tdata[0] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[10]_inst, from the path connected to top-level port: s1_axis_tdata[10] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[11]_inst, from the path connected to top-level port: s1_axis_tdata[11] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[12]_inst, from the path connected to top-level port: s1_axis_tdata[12] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[13]_inst, from the path connected to top-level port: s1_axis_tdata[13] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[14]_inst, from the path connected to top-level port: s1_axis_tdata[14] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[15]_inst, from the path connected to top-level port: s1_axis_tdata[15] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[16]_inst, from the path connected to top-level port: s1_axis_tdata[16] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[17]_inst, from the path connected to top-level port: s1_axis_tdata[17] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[18]_inst, from the path connected to top-level port: s1_axis_tdata[18] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[19]_inst, from the path connected to top-level port: s1_axis_tdata[19] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[1]_inst, from the path connected to top-level port: s1_axis_tdata[1] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[20]_inst, from the path connected to top-level port: s1_axis_tdata[20] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[21]_inst, from the path connected to top-level port: s1_axis_tdata[21] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[22]_inst, from the path connected to top-level port: s1_axis_tdata[22] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[23]_inst, from the path connected to top-level port: s1_axis_tdata[23] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[24]_inst, from the path connected to top-level port: s1_axis_tdata[24] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[25]_inst, from the path connected to top-level port: s1_axis_tdata[25] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[26]_inst, from the path connected to top-level port: s1_axis_tdata[26] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[27]_inst, from the path connected to top-level port: s1_axis_tdata[27] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[28]_inst, from the path connected to top-level port: s1_axis_tdata[28] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[29]_inst, from the path connected to top-level port: s1_axis_tdata[29] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[2]_inst, from the path connected to top-level port: s1_axis_tdata[2] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[30]_inst, from the path connected to top-level port: s1_axis_tdata[30] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[31]_inst, from the path connected to top-level port: s1_axis_tdata[31] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[3]_inst, from the path connected to top-level port: s1_axis_tdata[3] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[4]_inst, from the path connected to top-level port: s1_axis_tdata[4] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[5]_inst, from the path connected to top-level port: s1_axis_tdata[5] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[6]_inst, from the path connected to top-level port: s1_axis_tdata[6] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[7]_inst, from the path connected to top-level port: s1_axis_tdata[7] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[8]_inst, from the path connected to top-level port: s1_axis_tdata[8] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tdata_IBUF[9]_inst, from the path connected to top-level port: s1_axis_tdata[9] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tkeep_IBUF[0]_inst, from the path connected to top-level port: s1_axis_tkeep[0] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tkeep_IBUF[1]_inst, from the path connected to top-level port: s1_axis_tkeep[1] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tkeep_IBUF[2]_inst, from the path connected to top-level port: s1_axis_tkeep[2] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tkeep_IBUF[3]_inst, from the path connected to top-level port: s1_axis_tkeep[3] 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tlast_IBUF_inst, from the path connected to top-level port: s1_axis_tlast 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tuser_IBUF_inst, from the path connected to top-level port: s1_axis_tuser 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-35] Removing redundant IBUF, axis_s2_m1_sw_ngc_i/s1_axis_tvalid_IBUF_inst, from the path connected to top-level port: s1_axis_tvalid 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[0]_inst, from the path connected to top-level port: m_axis_tdata[0] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[10]_inst, from the path connected to top-level port: m_axis_tdata[10] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[11]_inst, from the path connected to top-level port: m_axis_tdata[11] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[12]_inst, from the path connected to top-level port: m_axis_tdata[12] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[13]_inst, from the path connected to top-level port: m_axis_tdata[13] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[14]_inst, from the path connected to top-level port: m_axis_tdata[14] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[15]_inst, from the path connected to top-level port: m_axis_tdata[15] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[16]_inst, from the path connected to top-level port: m_axis_tdata[16] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[17]_inst, from the path connected to top-level port: m_axis_tdata[17] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[18]_inst, from the path connected to top-level port: m_axis_tdata[18] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[19]_inst, from the path connected to top-level port: m_axis_tdata[19] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[1]_inst, from the path connected to top-level port: m_axis_tdata[1] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[20]_inst, from the path connected to top-level port: m_axis_tdata[20] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[21]_inst, from the path connected to top-level port: m_axis_tdata[21] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[22]_inst, from the path connected to top-level port: m_axis_tdata[22] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[23]_inst, from the path connected to top-level port: m_axis_tdata[23] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[24]_inst, from the path connected to top-level port: m_axis_tdata[24] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[25]_inst, from the path connected to top-level port: m_axis_tdata[25] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[26]_inst, from the path connected to top-level port: m_axis_tdata[26] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[27]_inst, from the path connected to top-level port: m_axis_tdata[27] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[28]_inst, from the path connected to top-level port: m_axis_tdata[28] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[29]_inst, from the path connected to top-level port: m_axis_tdata[29] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[2]_inst, from the path connected to top-level port: m_axis_tdata[2] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[30]_inst, from the path connected to top-level port: m_axis_tdata[30] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[31]_inst, from the path connected to top-level port: m_axis_tdata[31] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[3]_inst, from the path connected to top-level port: m_axis_tdata[3] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[4]_inst, from the path connected to top-level port: m_axis_tdata[4] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[5]_inst, from the path connected to top-level port: m_axis_tdata[5] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[6]_inst, from the path connected to top-level port: m_axis_tdata[6] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[7]_inst, from the path connected to top-level port: m_axis_tdata[7] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[8]_inst, from the path connected to top-level port: m_axis_tdata[8] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tdata_OBUF[9]_inst, from the path connected to top-level port: m_axis_tdata[9] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tkeep_OBUF[0]_inst, from the path connected to top-level port: m_axis_tkeep[0] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tkeep_OBUF[1]_inst, from the path connected to top-level port: m_axis_tkeep[1] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tkeep_OBUF[2]_inst, from the path connected to top-level port: m_axis_tkeep[2] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tkeep_OBUF[3]_inst, from the path connected to top-level port: m_axis_tkeep[3] 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tlast_OBUF_inst, from the path connected to top-level port: m_axis_tlast 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, s0_axis_tready_OBUF_inst, from the path connected to top-level port: s0_axis_tready 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tuser_OBUF_inst, from the path connected to top-level port: m_axis_tuser 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, m_axis_tvalid_OBUF_inst, from the path connected to top-level port: m_axis_tvalid 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-36] Removing redundant OBUF, s1_axis_tready_OBUF_inst, from the path connected to top-level port: s1_axis_tready 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+16 Infos, 121 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 658.188 ; gain = 419.172
+INFO: [Common 17-1381] The checkpoint 'E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/axis_s2_m1_sw/project_1/project_1.runs/synth_1/axis_s2_m1_sw.dcp' has been generated.
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 658.188 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Jun 28 12:16:38 2017...

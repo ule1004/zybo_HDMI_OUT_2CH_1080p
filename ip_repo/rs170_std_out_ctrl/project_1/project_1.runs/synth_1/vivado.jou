@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Jun 28 21:42:35 2017
+# Process ID: 14212
+# Current directory: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log rs170_std_out_ctrl.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rs170_std_out_ctrl.tcl
+# Log file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/project_1/project_1.runs/synth_1/rs170_std_out_ctrl.vds
+# Journal file: E:/P_2017/SEEDCORE/RTL/FINAL/mcb_rel_1.0_170509/ip_repo/rs170_std_out_ctrl/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source rs170_std_out_ctrl.tcl -notrace

@@ -1,0 +1,71 @@
+#-----------------------------------------------------------
+# Vivado v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Fri Dec 02 12:53:12 2016
+# Process ID: 6000
+# Current directory: D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9620 D:\SDLC_IP\user_ip\axis_sdlc_controller\project_1\project_1.xpr
+# Log file: D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/vivado.log
+# Journal file: D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.xpr
+INFO: [Project 1-313] Project file moved from 'D:/SDLC_IP/user_ip/axilite_sdlc_controller/project_1' since last save.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'D:/SDLC_IP/user_ip/axis_sdlc_controller/component.xml', nor could it be found using path 'D:/SDLC_IP/user_ip/axilite_sdlc_controller/component.xml'.
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'D:/SDLC_IP/user_ip/axilite_sdlc_controller'.
+WARNING: [filemgmt 56-2] IP Output Repository Path: Could not find the directory 'D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.cache/ip', nor could it be found using path 'D:/SDLC_IP/user_ip/axilite_sdlc_controller/project_1/project_1.cache/ip'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository 'd:/SDLC_IP/user_ip/axilite_sdlc_controller'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/SDLC_IP/user_ip/axi_sdlc_controller'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/SDLC_IP/user_ip/sdlc_controller'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.3/data/ip'.
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+import_files -norecurse D:/SDLC_IP/user_ip/axis_sdlc_controller/src/top/axis_sdlc.vhd
+remove_files  D:/SDLC_IP/user_ip/axis_sdlc_controller/component.xml
+remove_files  D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.srcs/sources_1/imports/top/axis_sdlc.vhd
+file delete -force D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.srcs/sources_1/imports/top/axis_sdlc.vhd
+import_files -norecurse D:/SDLC_IP/user_ip/axis_sdlc_controller/src/top/axis_sdlc.vhd
+remove_files  D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.srcs/sources_1/imports/top/axilite_sdlc.vhd
+file delete -force D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.srcs/sources_1/imports/top/axilite_sdlc.vhd
+remove_files  D:/SDLC_IP/user_ip/axis_sdlc_controller/src/top/pl330_dma_gen.vhd
+add_files -norecurse {D:/SDLC_IP/user_ip/axis_sdlc_controller/src/top/axi_streaming_dma_rx_fifo.vhd D:/SDLC_IP/user_ip/axis_sdlc_controller/src/top/axi_streaming_dma_tx_fifo.vhd}
+add_files -norecurse D:/SDLC_IP/user_ip/axis_sdlc_controller/src/top/pl330_dma_gen.vhd
+remove_files  D:/SDLC_IP/user_ip/axis_sdlc_controller/src/top/pl330_dma_gen.vhd
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+INFO: [HDL 9-1061] Parsing VHDL file "D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.srcs/sources_1/imports/top/axis_sdlc.vhd" into library xil_defaultlib [D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.srcs/sources_1/imports/top/axis_sdlc.vhd:1]
+[Fri Dec 02 20:53:20 2016] Launched synth_1...
+Run output will be captured here: D:/SDLC_IP/user_ip/axis_sdlc_controller/project_1/project_1.runs/synth_1/runme.log
+ipx::package_project -root_dir D:/SDLC_IP/user_ip/axis_sdlc_controller -vendor xilinx.com -library user -taxonomy /UserIP
+INFO: [IP_Flow 19-2228] Inferred bus interface 'S_AXI' of definition 'xilinx.com:interface:aximm:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'M_AXIS' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'S_AXIS' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-4753] Inferred signal 'reset' from port 'S_AXI_ARESETN' as interface 'S_AXI_ARESETN'.
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ARESETN': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4753] Inferred signal 'clock' from port 'S_AXI_ACLK' as interface 'S_AXI_ACLK'.
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_BUSIF' with value 'S_AXI'.
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_RESET' with value 'S_AXI_ARESETN'.
+set_property supported_families {zynq Production virtex7 Production qvirtex7 Production kintex7 Production kintex7l Production qkintex7 Production qkintex7l Production artix7 Production artix7l Production aartix7 Production qartix7 Production zynq Production qzynq Production azynq Production virtexu Production virtexuplus Production kintexuplus Production zynquplus Production kintexu Production} [ipx::current_core]
+set_property range 65536 [ipx::get_address_blocks reg0 -of_objects [ipx::get_memory_maps S_AXI -of_objects [ipx::current_core]]]
+ipx::associate_bus_interfaces -busif M_AXIS -clock S_AXI_ACLK [ipx::current_core]
+ipx::associate_bus_interfaces -busif S_AXIS -clock S_AXI_ACLK [ipx::current_core]
+set_property core_revision 2 [ipx::current_core]
+ipx::create_xgui_files [ipx::current_core]
+ipx::update_checksums [ipx::current_core]
+ipx::save_core [ipx::current_core]
+set_property  ip_repo_paths  {d:/SDLC_IP/user_ip/axis_sdlc_controller d:/SDLC_IP/user_ip/axilite_sdlc_controller d:/SDLC_IP/user_ip/axi_sdlc_controller d:/SDLC_IP/user_ip/sdlc_controller} [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/SDLC_IP/user_ip/axis_sdlc_controller'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository 'd:/SDLC_IP/user_ip/axis_sdlc_controller' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is 'd:/SDLC_IP/user_ip/axis_sdlc_controller/project_1'.)
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository 'd:/SDLC_IP/user_ip/axilite_sdlc_controller'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/SDLC_IP/user_ip/axi_sdlc_controller'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/SDLC_IP/user_ip/sdlc_controller'.
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Dec 02 20:56:21 2016...

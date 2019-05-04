@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Tue May 17 19:46:16 2016
+# Process ID: 12768
+# Log file: E:/LGE/RTL/K7_in_3840x1280_out_8x3840x160_160517/ip_repo/axis_s2_m1_sw/project_1/vivado.log
+# Journal file: E:/LGE/RTL/K7_in_3840x1280_out_8x3840x160_160517/ip_repo/axis_s2_m1_sw/project_1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/LGE/RTL/K7_in_3840x1280_out_8x3840x160_160517/ip_repo/axis_s2_m1_sw/project_1/project_1.xpr
+remove_files E:/LGE/RTL/K7_in_3840x1280_out_8x3840x160_160517/ip_repo/axis_s2_m1_sw/component.xml
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+ipx::package_project -root_dir E:/LGE/RTL/K7_in_3840x1280_out_8x3840x160_160517/ip_repo/axis_s2_m1_sw -vendor xilinx.com -library user -taxonomy /UserIP
+set_property supported_families {zynq Production kintex7 Production artix7 Production} [ipx::current_core]
+ipx::associate_bus_interfaces -busif m_axis -clock aclk [ipx::current_core]
+ipx::associate_bus_interfaces -busif s0_axis -clock aclk [ipx::current_core]
+set_property driver_value 0 [ipx::get_ports m_axis_tready -of_objects [ipx::current_core]]
+set_property driver_value 15 [ipx::get_ports s0_axis_tkeep -of_objects [ipx::current_core]]
+set_property driver_value 0 [ipx::get_ports s0_axis_tuser -of_objects [ipx::current_core]]
+set_property driver_value 15 [ipx::get_ports s1_axis_tkeep -of_objects [ipx::current_core]]
+set_property driver_value 0 [ipx::get_ports s1_axis_tuser -of_objects [ipx::current_core]]
+set_property driver_value 0 [ipx::get_ports axis_tdest_sel -of_objects [ipx::current_core]]
+set_property tooltip {AXI Stream Data Width: 8, 16, 24, 32-bit} [ipgui::get_guiparamspec -name "DATA_WIDTH" -component [ipx::current_core] ]
+set_property widget {textEdit} [ipgui::get_guiparamspec -name "DATA_WIDTH" -component [ipx::current_core] ]
+set_property core_revision 2 [ipx::current_core]
+ipx::create_xgui_files [ipx::current_core]
+ipx::update_checksums [ipx::current_core]
+ipx::save_core [ipx::current_core]
+update_ip_catalog -rebuild -repo_path e:/LGE/RTL/K7_in_3840x1280_out_8x3840x160_160517/ip_repo/axis_s2_m1_sw

@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Thu Jul 20 16:34:36 2017
+# Process ID: 7576
+# Current directory: E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/axis_bridge_fifo_synth_1
+# Command line: vivado.exe -log axis_bridge_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axis_bridge_fifo.tcl
+# Log file: E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/axis_bridge_fifo_synth_1/axis_bridge_fifo.vds
+# Journal file: E:/P_2017/SSTANDARD_2/ICB/RTL/icb_system_170719/ip_repo/v_in_crop_scale_axis/project_1/project_1.runs/axis_bridge_fifo_synth_1\vivado.jou
+#-----------------------------------------------------------
+source axis_bridge_fifo.tcl -notrace
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP axis_bridge_fifo, cache-ID = 58aec513f63f1414.

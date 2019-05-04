@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="synth_1" LaunchDir="E:/P_2017/SEEDCORE/RTL/V16_4/mcb_4ch_dma_sdlc_interlace_170413/ip_repo/hdmi_tx_out/project_1.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+</Runs>
+
